@@ -1,0 +1,40 @@
+{
+  "volumes": [
+    {
+      "volume": 1,
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-01.jpg",
+      "titulo": "Volume 1",
+      "capitulos": "Capítulo 0001, Capítulo 002, Capítulo 003, Capítulo 004, Capítulo 005, Capítulo 006"
+    },
+    {
+      "volume": 2,
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-02.jpg",
+      "titulo": "Volume 2",
+      "capitulos": "Capítulo 0007, Capítulo 008, Capítulo 009, Capítulo 010, Capítulo 011, Capítulo 012, Capítulo 013, Capítulo 014, Capítulo 015, Capítulo 016"
+    },
+    {
+      "volume": 3,
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-03.jpg",
+      "titulo": "Volume 3",
+      "capitulos": "Capítulo 0017, Capítulo 018, Capítulo 019, Capítulo 020, Capítulo 021, Capítulo 022, Capítulo 023, Capítulo 024, Capítulo 025"
+    },
+    {
+      "volume": 4,
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-04.jpg",
+      "titulo": "Volume 4",
+      "capitulos": "Capítulo 0026, Capítulo 027, Capítulo 028, Capítulo 029, Capítulo 030, Capítulo 031, Capítulo 032, Capítulo 033, Capítulo 034"
+    },
+    {
+      "volume": 5,
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-05.jpg",
+      "titulo": "Volume 5",
+      "capitulos": "Capítulo 0035, Capítulo 036, Capítulo 037, Capítulo 038, Capítulo 039, Capítulo 040, Capítulo 041, Capítulo 042, Capítulo 043"
+    },
+    {
+      "volume": 6,
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-06.webp",
+      "titulo": "Volume 6",
+      "capitulos": "Capítulo 0044, Capítulo 045, Capítulo 046, Capítulo 047, Capítulo 048, Capítulo 049, Capítulo 050, Capítulo 051, Capítulo 052"
+    }
+  ]
+}

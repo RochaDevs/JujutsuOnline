@@ -1,0 +1,19 @@
+.divStyled {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #FFF;
+    gap: 1rem;
+
+    .imgStyles {
+        height: 70%;
+        width: 35%;
+    }
+
+    .h1Styled {
+        font-size: 2rem;
+    }
+}

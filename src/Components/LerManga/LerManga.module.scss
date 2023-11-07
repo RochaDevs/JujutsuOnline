@@ -1,0 +1,43 @@
+.divStyled {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 4rem;
+
+    .h1Styled {
+        width: 100%;
+        font-size: 1.5rem;
+        background-color: #272829;
+        padding: 1rem;
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .divTwoStyled {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+
+    /* Estilos para telas menores (até 500px de largura) */
+    .divStyled {
+        width: 100%;
+        height: auto;
+        padding: 0rem 1rem;
+
+
+        .divTwoStyled {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: auto;
+        }
+    }
+
+}

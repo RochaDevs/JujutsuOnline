@@ -1,0 +1,53 @@
+{
+  "volumes": [
+    {
+      "id": 1,
+      "volume": "0",
+      "titulo": "Volume 0",
+      "descricao": "Capítulo 0 - ESPECIAL",
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-00.webp"
+    },
+    {
+      "id": 2,
+      "titulo": "Volume 1",
+      "volume": "1",
+      "descricao": "Capítulos 001 até 006",
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-01.jpg"
+    },
+    {
+      "id": 3,
+      "titulo": "Volume 2",
+      "volume": "2",
+      "descricao": "Capítulos 008 até 016",
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-02.jpg"
+    },
+    {
+      "id": 4,
+      "titulo": "Volume 3",
+      "volume": "3",
+      "descricao": "Capítulos 017 até 025",
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-03.jpg"
+    },
+    {
+      "id": 5,
+      "titulo": "Volume 4",
+      "volume": "4",
+      "descricao": "Capítulos 026 até 034",
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-04.jpg"
+    },
+    {
+      "id": 6,
+      "titulo": "Volume 5",
+      "volume": "5",
+      "descricao": "Capítulos 035 até 043",
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-05.jpg"
+    },
+    {
+      "id": 7,
+      "titulo": "Volume 6",
+      "volume": "6",
+      "descricao": "Capítulos 044 até 052",
+      "url": "https://raw.githubusercontent.com/RochaDevs/capas-jjk/main/capa-volume-06.webp"
+    }
+  ]
+}

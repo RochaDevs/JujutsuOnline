@@ -1,0 +1,14 @@
+.botaoStyled {
+    background-color: red;
+    padding: 1rem;
+    color: #FFF;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    width: 100px;
+    border: red solid 1px;
+    &:hover {
+        background-color: #FFF;
+        color: red;
+        border: red solid 1px;
+    }
+}

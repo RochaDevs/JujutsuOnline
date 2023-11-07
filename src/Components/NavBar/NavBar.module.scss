@@ -1,0 +1,41 @@
+.navStyled {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    margin: 0 4rem;
+    box-sizing: border-box;
+
+    .divOneStyled {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+
+        .imgStyled {
+            width: 150px;
+            position: relative;
+            top: 5px;
+        }
+        
+    }
+
+    .divTwoStyled {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+
+    }
+}
+
+@media (max-width: 500px) {
+    /* Estilos para telas menores (até 500px de largura) */
+
+    .navStyled {
+        width: max-content;
+        height: auto; /* Para permitir que a altura se ajuste automaticamente ao conteúdo */
+        margin: 0rem;
+        box-sizing: border-box;
+    }
+}

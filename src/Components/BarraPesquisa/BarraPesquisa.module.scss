@@ -1,0 +1,45 @@
+.divStyled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: 100%;
+
+    .inputStyled {
+        background-color: #272829;
+        width: 45%;
+        height: 70%;
+        padding: 1rem;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .buttonStyled {
+        padding: 1rem;
+        height: 70%;
+        text-align: center;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            background-color: #000;
+        }
+    }
+
+    .buttonClosedStyled {
+        width: 5%;
+        height: 70%;
+        border: solid red 4px;
+        margin-left: 1rem;
+        background-color: #FFF;
+        cursor: pointer;
+        color: red;
+        &:hover {
+            background-color: red;
+            border: solid #FFF 4px;
+            color: #FFF;
+        }
+    }
+}

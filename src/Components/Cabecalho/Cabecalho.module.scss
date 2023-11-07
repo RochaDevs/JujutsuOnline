@@ -1,0 +1,23 @@
+.headerStyled {
+    background-color: #272829;
+    height: 10vh;
+    color: #FFF;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+
+    .divStyled {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    /* Estilos para telas menores (até 500px de largura) */
+    .headerStyled {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        width: max-content;
+    }
+}
