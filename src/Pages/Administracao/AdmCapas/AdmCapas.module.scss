@@ -1,0 +1,12 @@
+.containerStyled {
+    background-color: #FFF;
+    .mainStyled {
+        height: 100vh;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0rem 1rem;
+    }
+}
