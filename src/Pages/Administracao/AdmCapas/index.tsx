@@ -3,6 +3,7 @@ import styles from './AdmCapas.module.scss'
 import axios from 'axios'
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material'
 import ICapas from '../../../interfaces/ICapas'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -22,9 +23,24 @@ function AdmCapas() {
         console.log(capas);
     }, [capas]);
 
+    const excluirCapa = (capaAhSerExcluida: ICapas) => {
+        axios.delete(`https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/capas/${capaAhSerExcluida.id}`)
+            .then(() => {
+                const listaCapas = capas.filter(capa => capa.id !== capaAhSerExcluida.id)
+                setCapas([...listaCapas])
+            })
+    }
+
     return (
         <div className={styles.containerStyled}>
-            <h1>ÁREA DO ADM PARA REALIZAR O CRUD DAS CAPAS</h1>
+
+            <div className={styles.boxStyled}>
+                <h1>ÁREA DO ADM PARA REALIZAR O CRUD DAS CAPAS</h1>
+                <NavLink to={'novo'}>
+                    <Button size='small'>Nova capa</Button>
+                </NavLink>
+            </div>
+
             <div className={styles.mainStyled}>
                 {capas.length > 0 && capas.map((volume) => (
                     <Card
@@ -54,8 +70,12 @@ function AdmCapas() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size='small'>Editar</Button>
-                            <Button size='small'>Apagar</Button>
+                            <NavLink to={`/admin/capas/${volume.id}`}>
+                                <Button size='small'>Editar</Button>
+                            </NavLink>
+                            <NavLink>
+                                <Button color='error' size='small' onClick={() => excluirCapa(volume)}>Apagar</Button>
+                            </NavLink>
                         </CardActions>
                     </Card>
                 ))}

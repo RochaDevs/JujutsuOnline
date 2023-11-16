@@ -1,5 +1,10 @@
 .containerStyled {
     background-color: #FFF;
+
+    .boxStyled {
+        padding: 1rem;
+    }
+
     .mainStyled {
         height: 100vh;
         display: flex;

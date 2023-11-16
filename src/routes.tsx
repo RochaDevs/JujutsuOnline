@@ -31,6 +31,7 @@ function AppRoutes() {
 
                     <Route path="/admin" element={<Administracao/>}>
                         <Route path='capas' element={<AdmCapas />} />
+                        <Route path='capas/:id' element={<FormularioCapas />} />
                         <Route path='capas/novo' element={<FormularioCapas />} />
                     </Route>
                 </Routes>
