@@ -2,15 +2,15 @@ import CapaVolume from './CapaVolume';
 import { FaReadme } from 'react-icons/fa';
 import styles from './LerManga.module.scss'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import ICapas from '../../interfaces/ICapas';
+import { httpCapas } from '../../http';
 
 function LerManga() {
 
     const [capas, setCapas] = useState<ICapas[]>([])
 
     useEffect(() => {
-        axios.get('https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/capas')
+        httpCapas.get('')
             .then(resposta => {
                 setCapas(resposta.data)
             })

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import styles from './AdmCapas.module.scss'
-import axios from 'axios'
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material'
 import ICapas from '../../../interfaces/ICapas'
 import { NavLink } from 'react-router-dom'
+import { httpCapas } from '../../../http'
 
 
 
@@ -12,7 +12,7 @@ function AdmCapas() {
     const [capas, setCapas] = useState<ICapas[]>([])
 
     useEffect(() => {
-        axios.get<ICapas[]>('https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/capas')
+        httpCapas.get<ICapas[]>('')
             .then(resposta => {
                 setCapas(resposta.data)
             })
@@ -24,7 +24,7 @@ function AdmCapas() {
     }, [capas]);
 
     const excluirCapa = (capaAhSerExcluida: ICapas) => {
-        axios.delete(`https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/capas/${capaAhSerExcluida.id}`)
+        httpCapas.delete(`/${capaAhSerExcluida.id}`)
             .then(() => {
                 const listaCapas = capas.filter(capa => capa.id !== capaAhSerExcluida.id)
                 setCapas([...listaCapas])

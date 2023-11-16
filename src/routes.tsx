@@ -8,7 +8,7 @@ import EmConstrucao from "./Components/EmConstrucao"
 import AdmCapas from "./Pages/Administracao/AdmCapas"
 import PaginaPadrao from "./Components/PaginaPadrao"
 import Administracao from "./Pages/Administracao"
-import FormularioCapas from "./Pages/Administracao/AdmCapas/FormularioCapas"
+import FormularioCapas from "./Pages/Administracao/AdmCapas/AdmCapasForm/FormularioCapas"
 
 function AppRoutes() {
 
