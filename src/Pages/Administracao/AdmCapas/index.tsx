@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './AdmCapas.module.scss'
-import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material'
+import { Card, CardMedia, CardContent, Typography, CardActions, Button, Paper } from '@mui/material'
 import ICapas from '../../../interfaces/ICapas'
 import { NavLink } from 'react-router-dom'
 import { httpCapas } from '../../../http'
@@ -32,55 +32,62 @@ function AdmCapas() {
     }
 
     return (
-        <div className={styles.containerStyled}>
+        <section className={styles.sectionAllStyled}>
 
-            <div className={styles.boxStyled}>
-                <h1>ÁREA DO ADM PARA REALIZAR O CRUD DAS CAPAS</h1>
-                <NavLink to={'novo'}>
-                    <Button size='small'>Nova capa</Button>
-                </NavLink>
-            </div>
+            <aside className={styles.asideStyled}>
+                <Paper>
+                    <img src="/public/gege.png" alt="Gege Akutami" />
+                    <Typography color={'text.secondaty'} textAlign={'center'} padding={'1rem'}>
+                        Olá, eu sou Gege Akutami! O criador de Jujutsu Kaisen. Se você deseja adicionar um dos meus mais recentes volumes, basta clicar no botão abaixo!
+                    </Typography>
+                    <NavLink to={'novo'}>
+                        <Button size='small' fullWidth>Nova capa</Button>
+                    </NavLink>
+                </Paper>
+            </aside>
 
-            <div className={styles.mainStyled}>
-                {capas.length > 0 && capas.map((volume) => (
-                    <Card
-                        key={volume.id}
-                        sx={{
-                            width: 300,
-                            height: 'min-content',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center'
-                        }}
-                    >
-                        {volume.url && (
-                            <CardMedia
-                                sx={{ width: '100%', height: 300 }}
-                                component="img"
-                                image={volume.url}
-                                title={volume.titulo}
-                            />
-                        )}
-                        <CardContent>
-                            <Typography gutterBottom variant='h5' component='div'>
-                                {volume.titulo}
-                            </Typography>
-                            <Typography gutterBottom variant='body2' color='text.secondary'>
-                                {volume.descricao}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <NavLink to={`/admin/capas/${volume.id}`}>
-                                <Button size='small'>Editar</Button>
-                            </NavLink>
-                            <NavLink>
-                                <Button color='error' size='small' onClick={() => excluirCapa(volume)}>Apagar</Button>
-                            </NavLink>
-                        </CardActions>
-                    </Card>
-                ))}
+            <div className={styles.containerStyled}>
+
+                <div className={styles.mainStyled}>
+                    {capas.length > 0 && capas.map((volume) => (
+                        <Card
+                            key={volume.id}
+                            sx={{
+                                width: 250,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center'
+                            }}
+                        >
+                            {volume.url && (
+                                <CardMedia
+                                    sx={{ width: '80%', height: 300, marginTop: '1rem' }}
+                                    component="img"
+                                    image={volume.url}
+                                    title={volume.titulo}
+                                />
+                            )}
+                            <CardContent>
+                                <Typography gutterBottom variant='h5' component='div'>
+                                    {volume.titulo}
+                                </Typography>
+                                <Typography gutterBottom variant='body2' color='text.secondary'>
+                                    {volume.descricao}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <NavLink to={`/admin/capas/${volume.id}`}>
+                                    <Button size='small'>Editar</Button>
+                                </NavLink>
+                                <NavLink>
+                                    <Button color='error' size='small' onClick={() => excluirCapa(volume)}>Apagar</Button>
+                                </NavLink>
+                            </CardActions>
+                        </Card>
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
 
     );
 

@@ -7,12 +7,17 @@ interface INavBarAdm {
     titulo3: string
 }
 
-function NavBarAdm({titulo1, titulo2, titulo3} :INavBarAdm) {
+function NavBarAdm({ titulo1, titulo2, titulo3 }: INavBarAdm) {
     return (
         <nav className={styles.navStyled}>
-            <NavLink>{titulo1}</NavLink>
-            <NavLink>{titulo2}</NavLink>
-            <NavLink>{titulo3}</NavLink>
+            <div className={styles.saudacaoStyled}>
+                <h1>Olá, <span>bom dia</span> <span>admin_Matheus</span></h1>
+            </div>
+            <div className={styles.linksStyled}>
+                <NavLink to={'/admin'}>{titulo1}</NavLink>
+                <NavLink to={'capas'}>{titulo2}</NavLink>
+                <NavLink to={'capitulos'}>{titulo3}</NavLink>
+            </div>
         </nav>
     )
 }

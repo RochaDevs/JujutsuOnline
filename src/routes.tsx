@@ -9,6 +9,7 @@ import AdmCapas from "./Pages/Administracao/AdmCapas"
 import PaginaPadrao from "./Components/PaginaPadrao"
 import Administracao from "./Pages/Administracao"
 import FormularioCapas from "./Pages/Administracao/AdmCapas/AdmCapasForm/FormularioCapas"
+import AreaAdmin from "./Pages/Administracao/AreaAdmin"
 
 function AppRoutes() {
 
@@ -29,7 +30,8 @@ function AppRoutes() {
                         <Route path='*' element={<PaginaError children={'Essa página'} />} />
                     </Route>
 
-                    <Route path="/admin" element={<Administracao/>}>
+                    <Route path="/admin" element={<Administracao />}>
+                        <Route index element={<AreaAdmin />} />
                         <Route path='capas' element={<AdmCapas />} />
                         <Route path='capas/:id' element={<FormularioCapas />} />
                         <Route path='capas/novo' element={<FormularioCapas />} />

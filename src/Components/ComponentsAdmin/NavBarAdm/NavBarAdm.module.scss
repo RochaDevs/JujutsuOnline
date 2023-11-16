@@ -3,4 +3,20 @@
     height: 7%;
     background-color: #7752FE;
     color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .saudacaoStyled {
+        width: 65%;
+        text-align: center;
+    }
+
+    .linksStyled {
+        display: flex;
+        justify-content: space-around;
+        width: 35%;
+        font-size: 1.25rem;
+    }
+
 }
