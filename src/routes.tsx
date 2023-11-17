@@ -8,8 +8,10 @@ import EmConstrucao from "./Components/EmConstrucao"
 import AdmCapas from "./Pages/Administracao/AdmCapas"
 import PaginaPadrao from "./Components/PaginaPadrao"
 import Administracao from "./Pages/Administracao"
-import FormularioCapas from "./Pages/Administracao/AdmCapas/AdmCapasForm/FormularioCapas"
+import FormularioCapas from "./Pages/Administracao/AdmCapas/AdmCapasForm"
 import AreaAdmin from "./Pages/Administracao/AreaAdmin"
+import AdmCapitulos from "./Pages/Administracao/AdmCapitulos"
+import FormularioCapitulos from "./Pages/Administracao/AdmCapitulos/AdmCapitulosForm"
 
 function AppRoutes() {
 
@@ -35,6 +37,9 @@ function AppRoutes() {
                         <Route path='capas' element={<AdmCapas />} />
                         <Route path='capas/:id' element={<FormularioCapas />} />
                         <Route path='capas/novo' element={<FormularioCapas />} />
+                        <Route path='capitulos' element={<AdmCapitulos />} />
+                        <Route path='capitulos/:id' element={<FormularioCapitulos />} />
+                        <Route path='capitulos/novo' element={<FormularioCapitulos />} />
                     </Route>
                 </Routes>
 

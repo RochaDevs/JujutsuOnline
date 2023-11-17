@@ -8,15 +8,17 @@ interface ICapaVolume {
     volume: string
 }
 
-function CapaVolume({ titulo, descricao, url, volume } :ICapaVolume) {
+function CapaVolume({ titulo, descricao, url, volume }: ICapaVolume) {
 
     return (
         <div className={styles.divStyled}>
             <NavLink className={styles.navLinkStyled} to={`volumes/${volume}`}>
                 <img className={styles.imgStyled} src={url} alt={titulo} />
             </NavLink>
-            <h2 className={styles.h2Styled}>{titulo}</h2>
-            <h2 className={styles.h2Styled}>{descricao}</h2>
+            <div className={styles.boxH2}>
+                <h2 className={styles.h2Styled}>{titulo}</h2>
+                <h2 className={styles.h2Styled}>{descricao}</h2>
+            </div>
         </div>
     )
 }

@@ -1,31 +1,39 @@
 import { useParams } from "react-router-dom";
 import Volume from "../../Components/Volume";
-import volumesjjk from "../../../backend-json/volumes.json";
-
-interface VolumeObj {
-    volume: number;
-    url: string;
-    titulo: string;
-    descricao?: string;
-    // Outras propriedades específicas do objeto de volume, se houver
-}
+import { useEffect, useState } from "react";
+import { httpCapas } from "../../http";
+import ICapas from "../../interfaces/ICapas";
   
 
 function Volumes() {
 
-    const parametros = useParams()
+    const [capas, setCapas] = useState<ICapas[]>([])
 
-    const volumeObj: VolumeObj | undefined = volumesjjk.volumes.find((volumejjk) => {
-        return volumejjk.volume === Number(parametros.volume)
+    useEffect(() => {
+        httpCapas.get<ICapas[]>('')
+            .then(resposta => setCapas(resposta.data))
+    }, [])
+
+    // useEffect(() => {
+    //     console.log(capas)
+    // }, [capas])
+
+
+    const parametros = useParams<{ volume: string }>();
+
+    // console.log(parametros)
+
+    const volumeEncontrado = capas.find((capa) => {
+        return parametros.volume === capa.volume
     })
 
-    console.log(typeof(volumeObj))
+    console.log(volumeEncontrado)
 
     return (
 
         <>
-            {volumeObj && (
-                <Volume volumeObj={volumeObj} key={volumeObj.volume} />
+            {volumeEncontrado && (
+                <Volume volumeEncontrado={volumeEncontrado} key={volumeEncontrado.volume} />
             )}
         </>
 

@@ -1,25 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PaginaError from "../PaginaErro";
-import capitulosManga from '../../../backend-json/capitulos.json'
 import styles from './Capitulo.module.scss'
+import { httpCapitulos } from "../../http";
+import ICapitulos from "../../interfaces/ICapitulos";
 
 function Capitulo() {
 
-  const [paginas, setPaginas] = useState(capitulosManga);
+  const [paginas, setPaginas] = useState<ICapitulos[]>([]);
   const parametros = useParams();
 
-  const capituloEncontrado = paginas.capitulos.find((pagina) => {
-    return Number(pagina.capitulo) === Number(parametros.capitulo);
-  });
+  useEffect(() => {
+    httpCapitulos.get('')
+      .then(resposta => {setPaginas(resposta.data), console.log(paginas)})
+  }, [])
+
+  const capituloEncontrado = paginas.find((pagina) => {
+    return pagina.capituloID === parametros.capitulo
+  })
 
   if (!capituloEncontrado) {
     return (
-        <PaginaError children={'Esse capítulo'} />
+      <PaginaError children={'Esse capítulo'} />
     );
   }
 
-  const urlSplit = capituloEncontrado.url.split(',');
+  const urlSplit = capituloEncontrado.urls.split(',');
 
   return (
     <div className={styles.divStyled}>

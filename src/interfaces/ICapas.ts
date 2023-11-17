@@ -1,8 +1,9 @@
 
 export default interface ICapas {
-    id: number
+    id: number | string
     volume: string
     titulo: string
     descricao: string
     url: string
+    capitulos?: string
 }

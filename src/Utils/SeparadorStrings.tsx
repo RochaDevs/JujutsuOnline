@@ -1,6 +1,6 @@
 
-function SeparadorStrings(volumeObj) {
-    const strings = volumeObj.capitulos
+function SeparadorStrings(volumeEncontrado) {
+    const strings = volumeEncontrado.capitulos
     const stringsSeparadas = strings.split(',')
     return (
         stringsSeparadas

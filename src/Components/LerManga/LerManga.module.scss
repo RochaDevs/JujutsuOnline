@@ -13,13 +13,6 @@
         align-items: center;
         gap: 1rem;
     }
-
-    .divTwoStyled {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        flex-wrap: wrap;
-    }
 }
 
 @media (max-width: 500px) {
@@ -29,16 +22,6 @@
         width: 100%;
         height: auto;
         padding: 0rem 1rem;
-
-
-        .divTwoStyled {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            width: auto;
-        }
     }
 
 }

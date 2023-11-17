@@ -7,6 +7,14 @@ import { httpCapas } from "../../../../http"
 
 function FormularioCapas() {
 
+    const limparFormulario = () => {
+        setTitulo('');
+        setVolume('');
+        setDescricao('');
+        setUrl('');
+        setCapitulos('');
+    };
+
     const parametros = useParams()
 
     console.log(parametros)
@@ -19,6 +27,9 @@ function FormularioCapas() {
                         setVolume(resposta.data.volume),
                         setDescricao(resposta.data.descricao),
                         setUrl(resposta.data.url)
+                        if (resposta.data.capitulos !== undefined) {
+                            setCapitulos(resposta.data.capitulos);
+                        }
                 })
         }
     }, [parametros])
@@ -35,8 +46,12 @@ function FormularioCapas() {
                 titulo: titulo,
                 volume: volume,
                 descricao: descricao,
-                url: url
-            }).then(() => alert('Volume atualizado com sucesso'))
+                url: url,
+                capitulos: capitulos
+            }).then(() => {
+                alert('Volume atualizado com sucesso'), 
+                limparFormulario()
+            })
 
         } else {
 
@@ -44,8 +59,12 @@ function FormularioCapas() {
                 titulo: titulo,
                 volume: volume,
                 descricao: descricao,
-                url: url
-            }).then(() => alert('Novo volume cadastrado com sucesso'))
+                url: url,
+                capitulos: capitulos
+            }).then(() => {
+                alert('Novo volume cadastrado com sucesso'),
+                limparFormulario()
+            })
 
         }
 
@@ -55,12 +74,13 @@ function FormularioCapas() {
     const [volume, setVolume] = useState('')
     const [descricao, setDescricao] = useState('')
     const [url, setUrl] = useState('')
+    const [capitulos, setCapitulos] = useState('')
 
     return (
-        
+
         <section className={styles.sectionStyled}>
 
-            <Paper sx={{p: 6}}>
+            <Paper sx={{ p: 6 }}>
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
 
@@ -106,6 +126,16 @@ function FormularioCapas() {
                             variant="outlined"
                             value={url} type="text"
                             onChange={(evento) => setUrl(evento.target.value)}
+                            fullWidth
+                            required
+                        />
+
+                        <TextField
+                            sx={{ margin: '0.5rem 0rem' }}
+                            label="Capítulos"
+                            variant="outlined"
+                            value={capitulos} type="text"
+                            onChange={(evento) => setCapitulos(evento.target.value)}
                             fullWidth
                             required
                         />
