@@ -1,24 +1,57 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { httpCapitulos } from "../../../../http"
+import { useNavigate, useParams } from "react-router-dom"
+import ICapitulos from "../../../../interfaces/ICapitulos"
 
 function FormularioCapitulos() {
 
-    const [capitulo, setCapitulos] = useState('')
-    const [capituloID, setCapitulosID] = useState('')
+    const [capitulo, setCapitulo] = useState('')
+    const [capituloID, setCapituloID] = useState('')
     const [urls, setUrls] = useState('')
+
+    const parametros = useParams()
+
+    console.log(parametros)
+
+    useEffect(() => {
+
+        if (parametros.id) {
+            httpCapitulos.get<ICapitulos>(`/${parametros.id}`)
+                .then(resposta => {
+                    setCapitulo(resposta.data.capitulo)
+                    setCapituloID(resposta.data.capituloID)
+                    setUrls(resposta.data.urls)
+                })
+        }
+
+    }, [parametros])
+
+    const hookNavegation = useNavigate()
 
     const aoSubmeterForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        httpCapitulos.post('', {
-            capitulo: capitulo,
-            capituloID: capituloID,
-            urls: urls
-        })
-            .then(() => {
+        if (parametros.id) {
+            httpCapitulos.put(`/${parametros.id}`, {
+                capitulo: capitulo,
+                capituloID: capituloID,
+                urls: urls
+            }).then(() => {
+                alert('Capítulo atualizado com sucesso')
+            })
+
+        } else {
+
+            httpCapitulos.post('', {
+                capitulo: capitulo,
+                capituloID: capituloID,
+                urls: urls
+            }).then(() => {
                 alert('Novo capítulo adicionado com sucesso')
             })
+        }
+
     }
 
     return (
@@ -43,7 +76,7 @@ function FormularioCapitulos() {
                             fullWidth
                             required
                             value={capitulo}
-                            onChange={(evento) => setCapitulos(evento.target.value)}
+                            onChange={(evento) => setCapitulo(evento.target.value)}
                         />
                         <TextField
                             sx={{ margin: '0.5rem 0rem' }}
@@ -53,7 +86,7 @@ function FormularioCapitulos() {
                             fullWidth
                             required
                             value={capituloID}
-                            onChange={(evento) => setCapitulosID(evento.target.value)}
+                            onChange={(evento) => setCapituloID(evento.target.value)}
                         />
                         <TextField
                             sx={{ margin: '0.5rem 0rem' }}
@@ -74,8 +107,8 @@ function FormularioCapitulos() {
 
                         <Button
                             sx={{ margin: '0.5rem 0rem' }}
-                            type="submit"
                             variant="outlined"
+                            onClick={() => hookNavegation(-1)}
                             fullWidth
                             color="error"
                         >   Voltar

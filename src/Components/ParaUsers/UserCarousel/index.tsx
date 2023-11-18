@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-function LerManga() {
+function UserCarousel() {
 
     const [capas, setCapas] = useState<ICapas[]>([])
 
@@ -59,4 +59,4 @@ function LerManga() {
 }
 
 
-export default LerManga
+export default UserCarousel

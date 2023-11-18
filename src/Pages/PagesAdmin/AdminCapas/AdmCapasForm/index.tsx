@@ -7,6 +7,12 @@ import { httpCapas } from "../../../../http"
 
 function FormularioCapas() {
 
+    const [titulo, setTitulo] = useState('')
+    const [volume, setVolume] = useState('')
+    const [descricao, setDescricao] = useState('')
+    const [url, setUrl] = useState('')
+    const [capitulos, setCapitulos] = useState('')
+
     const limparFormulario = () => {
         setTitulo('');
         setVolume('');
@@ -24,12 +30,12 @@ function FormularioCapas() {
             httpCapas.get<ICapas>(`/${parametros.id}`)
                 .then(resposta => {
                     setTitulo(resposta.data.titulo),
-                        setVolume(resposta.data.volume),
-                        setDescricao(resposta.data.descricao),
-                        setUrl(resposta.data.url)
-                        if (resposta.data.capitulos !== undefined) {
-                            setCapitulos(resposta.data.capitulos);
-                        }
+                    setVolume(resposta.data.volume),
+                    setDescricao(resposta.data.descricao),
+                    setUrl(resposta.data.url)
+                    if (resposta.data.capitulos !== undefined) {
+                        setCapitulos(resposta.data.capitulos);
+                    }
                 })
         }
     }, [parametros])
@@ -49,8 +55,8 @@ function FormularioCapas() {
                 url: url,
                 capitulos: capitulos
             }).then(() => {
-                alert('Volume atualizado com sucesso'), 
-                limparFormulario()
+                alert('Volume atualizado com sucesso'),
+                    limparFormulario()
             })
 
         } else {
@@ -63,18 +69,12 @@ function FormularioCapas() {
                 capitulos: capitulos
             }).then(() => {
                 alert('Novo volume cadastrado com sucesso'),
-                limparFormulario()
+                    limparFormulario()
             })
 
         }
 
     }
-
-    const [titulo, setTitulo] = useState('')
-    const [volume, setVolume] = useState('')
-    const [descricao, setDescricao] = useState('')
-    const [url, setUrl] = useState('')
-    const [capitulos, setCapitulos] = useState('')
 
     return (
 
@@ -150,7 +150,6 @@ function FormularioCapas() {
 
                         <Button
                             sx={{ margin: '0.5rem 0rem' }}
-                            type="submit"
                             onClick={() => hookNavegation(-1)}
                             variant="outlined"
                             fullWidth

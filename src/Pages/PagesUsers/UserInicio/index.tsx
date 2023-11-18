@@ -1,4 +1,4 @@
-import LerManga from "../../../Components/ParaUsers/UserCarousel"
+import UserCarousel from "../../../Components/ParaUsers/UserCarousel"
 
 function Inicio() {
 
@@ -10,9 +10,9 @@ function Inicio() {
     // const stringFinal = urls.join(", ");
     // console.log(stringFinal);
     return (
-        <div>
-            <LerManga />
-        </div>
+        <section>
+            <UserCarousel />
+        </section>
     )
 }
 
