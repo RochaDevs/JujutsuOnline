@@ -1,4 +1,4 @@
-import gojo from '../../assets/Gojo.png'
+import gojo from '../../../../public/Gojo.png'
 import { NavLink } from "react-router-dom";
 import styles from './Rodape.module.scss'
 import styled from "styled-components"

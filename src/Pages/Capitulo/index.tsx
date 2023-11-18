@@ -15,6 +15,8 @@ function Capitulo() {
       .then(resposta => {setPaginas(resposta.data), console.log(paginas)})
   }, [])
 
+  console.log(parametros)
+
   const capituloEncontrado = paginas.find((pagina) => {
     return pagina.capituloID === parametros.capitulo
   })

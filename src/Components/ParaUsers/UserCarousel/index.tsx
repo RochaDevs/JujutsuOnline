@@ -1,9 +1,9 @@
-import CapaVolume from './CapaVolume';
+import CapaVolume from './UserCapaDosVolume';
 import { FaReadme } from 'react-icons/fa';
 import styles from './LerManga.module.scss'
 import { useEffect, useState } from 'react';
-import ICapas from '../../interfaces/ICapas';
-import { httpCapas } from '../../http';
+import ICapas from '../../../interfaces/ICapas';
+import { httpCapas } from '../../../http';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -22,6 +22,10 @@ function LerManga() {
             })
     }, [])
 
+    useEffect(() => {
+        console.log(capas)
+    }, [capas])
+
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -32,7 +36,7 @@ function LerManga() {
 
     return (
         <div className={styles.divStyled}>
-            
+
             <h1 className={styles.h1Styled}>
                 <FaReadme />
                 Ler Mangá

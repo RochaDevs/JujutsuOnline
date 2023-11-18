@@ -1,4 +1,4 @@
-import NavBar from "../NavBar";
+import NavBar from "../UserNavBar";
 import logo from './logo.png';
 import { FaReadme, FaPlay, FaHome} from 'react-icons/fa';
 import { BiLogIn } from 'react-icons/bi';

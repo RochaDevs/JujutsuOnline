@@ -14,7 +14,7 @@ function Volume({ volumeEncontrado }: VolumeProps) {
     const [stringLink, setStringLink] = useState('')
 
     const capituloClicado = (stringClicada: string) => {
-        const position = stringClicada.substring(11);
+        const position = stringClicada.substring(10);
         setStringLink(position);
     }
 
@@ -37,11 +37,10 @@ function Volume({ volumeEncontrado }: VolumeProps) {
                     return (
                         <NavLink
                             className={styles.navLinkStyled}
-                            to={`${stringLink}${string.substring(11)}`}
+                            to={`${stringLink}${string.substring(10)}`}
                             onClick={() => capituloClicado(string)}
                             key={string}>
                             {string}
-
                         </NavLink>)
                 })}
             </div>
