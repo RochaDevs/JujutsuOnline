@@ -1,9 +1,10 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material"
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 import { NavLink } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import styles from './AdmCapitulos.module.scss'
 import { httpCapitulos } from "../../../http"
 import ICapitulo from "../../../interfaces/ICapitulos"
+import AdminPOST from "../../../Components/ParaAdmin/AdminPOST"
 
 function AdmCapitulos() {
 
@@ -20,15 +21,12 @@ function AdmCapitulos() {
         <section className={styles.sectionStyled}>
 
             <aside className={styles.asideStyled}>
-                <Paper>
-                    <img src="/public/gege.png" alt="Gege Akutami" />
-                    <Typography color={'text.secondaty'} textAlign={'center'} padding={'1rem'}>
-                        Olá, eu sou Gege Akutami! O criador de Jujutsu Kaisen. Se você deseja adicionar um dos meus mais recentes capítulos, basta clicar no botão abaixo!
-                    </Typography>
-                    <NavLink to={'novo'}>
-                        <Button size='small' fullWidth>Novo capítulo</Button>
-                    </NavLink>
-                </Paper>
+                <AdminPOST
+                    src={'/public/gege.png'}
+                    alt={'Gege Akutami'}
+                    tipographyChildren={'Olá, eu sou Gege Akutami! O criador de Jujutsu Kaisen. Se você deseja adicionar um dos meus mais recentes capítulos, basta clicar no botão abaixo!'}
+                    buttonChildren={'Novo capítulo'}
+                />
             </aside>
 
             <div className={styles.containerStyled}>

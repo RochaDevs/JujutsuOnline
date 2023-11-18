@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import styles from './AdmCapas.module.scss'
-import { Card, CardMedia, CardContent, Typography, CardActions, Button, Paper } from '@mui/material'
+import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material'
 import ICapas from '../../../interfaces/ICapas'
 import { NavLink } from 'react-router-dom'
 import { httpCapas } from '../../../http'
+import AdminPOST from '../../../Components/ParaAdmin/AdminPOST'
 
 
 
@@ -35,15 +36,12 @@ function AdmCapas() {
         <section className={styles.sectionAllStyled}>
 
             <aside className={styles.asideStyled}>
-                <Paper>
-                    <img src="/public/gege.png" alt="Gege Akutami" />
-                    <Typography color={'text.secondaty'} textAlign={'center'} padding={'1rem'}>
-                        Olá, eu sou Gege Akutami! O criador de Jujutsu Kaisen. Se você deseja adicionar um dos meus mais recentes volumes, basta clicar no botão abaixo!
-                    </Typography>
-                    <NavLink to={'novo'}>
-                        <Button size='small' fullWidth>Nova capa</Button>
-                    </NavLink>
-                </Paper>
+                <AdminPOST
+                    src={'/public/gege.png'}
+                    alt={'Gege Akutami'}
+                    tipographyChildren={'Olá, eu sou Gege Akutami! O criador de Jujutsu Kaisen. Se você deseja adicionar um dos meus mais recentes volumes, basta clicar no botão abaixo!'}
+                    buttonChildren={'Nova Capa'}
+                />
             </aside>
 
             <div className={styles.containerStyled}>
