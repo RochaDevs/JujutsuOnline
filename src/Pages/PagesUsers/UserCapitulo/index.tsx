@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import PaginaError from "../PaginaErro";
+import PaginaError from "../UserPageError";
 import styles from './Capitulo.module.scss'
-import { httpCapitulos } from "../../http";
-import ICapitulos from "../../interfaces/ICapitulos";
+import { httpCapitulos } from "../../../http";
+import ICapitulos from "../../../interfaces/ICapitulos";
 
 function Capitulo() {
 

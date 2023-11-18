@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import Volume from "../../Components/Volume";
+import Volume from "../../../Components/ParaUsers/UserVolume";
 import { useEffect, useState } from "react";
-import { httpCapas } from "../../http";
-import ICapas from "../../interfaces/ICapas";
+import { httpCapas } from "../../../http";
+import ICapas from "../../../interfaces/ICapas";
   
 
 function Volumes() {

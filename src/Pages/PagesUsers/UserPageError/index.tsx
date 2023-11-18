@@ -1,4 +1,4 @@
-import Botao from "../../Components/ParaUsers/UserBotao";
+import Botao from "../../../Components/ParaUsers/UserBotao";
 import { useNavigate } from "react-router-dom";
 import styles from './PaginaErro.module.scss'
 

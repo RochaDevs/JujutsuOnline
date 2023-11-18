@@ -1,9 +1,9 @@
 import { FaReadme } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
-import SeparadorStrings from "../../Utils/SeparadorStrings"
+import SeparadorStrings from "../../../Utils/SeparadorStrings"
 import { useState } from "react";
 import styles from './Volume.module.scss'
-import ICapas from '../../interfaces/ICapas';
+import ICapas from '../../../interfaces/ICapas';
 
 interface VolumeProps {
     volumeEncontrado: ICapas;

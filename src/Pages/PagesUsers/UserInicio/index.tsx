@@ -1,4 +1,4 @@
-import LerManga from "../../Components/ParaUsers/UserCarousel"
+import LerManga from "../../../Components/ParaUsers/UserCarousel"
 
 function Inicio() {
 
