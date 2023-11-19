@@ -1,0 +1,23 @@
+.sectionStyled {
+    height: 100vh; /* Altura total da viewport */
+    width: 100vw; /* Largura total da viewport */
+    background-color: #FFF;
+    display: flex;
+    overflow: hidden; /* Esconde qualquer overflow da section */
+
+    .asideStyled {
+        width: 20%; /* Largura fixa */
+        flex-shrink: 0; /* Impede o encolhimento */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; /* Altura completa da section */
+        overflow-y: auto; /* Barra de rolagem se necessário */
+    }
+
+    .outletStyled {
+        width: 80%; /* Largura restante da section */
+        height: 100%; /* Altura completa da section */
+        overflow-y: auto; /* Barra de rolagem para conteúdo que excede a altura */
+    }
+}

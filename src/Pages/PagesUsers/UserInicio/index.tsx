@@ -10,7 +10,7 @@ export default function UserInicio() {
     // const stringFinal = urls.join(", ");
     // console.log(stringFinal);
     return (
-        <section>
+        <section style={{margin: '2rem 0rem'}}>
             <UserCarousel />
         </section>
     )

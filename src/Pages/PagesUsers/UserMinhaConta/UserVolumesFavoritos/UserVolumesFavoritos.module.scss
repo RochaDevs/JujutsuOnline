@@ -1,0 +1,24 @@
+.divStyled {
+    display: flex;
+    color: #FFF;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+
+    .imgStyled {
+        height: 21rem;
+        width: 100%;
+    }
+
+    .boxH2 {
+        width: 100%;
+        
+        .h2Styled {
+            width: 100%;
+            background-color: #272829;
+            padding: 0.2rem;
+        }
+    }
+
+}

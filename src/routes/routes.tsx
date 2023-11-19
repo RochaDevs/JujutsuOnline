@@ -15,6 +15,7 @@ import UserCadastrar from "../Pages/PagesUsers/UserCadastro"
 import UserVolumes from "../Pages/PagesUsers/UserVolumes"
 import UserCapitulo from "../Pages/PagesUsers/UserCapitulo"
 import UserPaginaError from "../Pages/PagesUsers/UserPageError"
+import UserVolumesFavoritos from "../Pages/PagesUsers/UserMinhaConta/UserVolumesFavoritos"
 
 function AppRoutes() {
 
@@ -29,7 +30,11 @@ function AppRoutes() {
                         <Route path='anime' element={<UserEmConstrucao />} />
                         <Route path='manga' element={<UserEmConstrucao />} />
                         <Route path='login' element={<UserLogin />} />
-                        <Route path='minha-conta' element={<UserMinhaConta />} />
+                        <Route path='minha-conta' element={<UserMinhaConta />}>
+                            <Route path='volumes-favoritos' element={<UserVolumesFavoritos />} />
+                            <Route path='capitulos-favoritos' element={<UserEmConstrucao />} />
+                            <Route path='meus-dados' element={<UserEmConstrucao />} />
+                        </Route>
                         <Route path='cadastrar' element={<UserCadastrar />} />
                         <Route path="volumes/:volume" element={<UserVolumes />} />
                         <Route path="volumes/:volume/:capitulo" element={<UserCapitulo />} />
