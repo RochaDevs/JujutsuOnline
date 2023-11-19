@@ -17,6 +17,14 @@ function AdmCapitulos() {
             })
     }, [])
 
+    function excluirCapitulo(capituloAhSerExcluido: ICapitulo) {
+        httpCapitulos.delete(`${capituloAhSerExcluido.id}`)
+            .then(() => {
+                const listaCapitulos = capitulos.filter((capitulo) => capitulo.id !== capituloAhSerExcluido.id )
+                setCapitulos([...listaCapitulos])
+            })
+    }
+
     return (
         <section className={styles.sectionStyled}>
 
@@ -51,7 +59,9 @@ function AdmCapitulos() {
                                     </TableCell>
                                     <TableCell align="right">
                                         <NavLink to={''}>
-                                            <Button size="small" color="error">Apagar</Button>
+                                            <Button size="small" color="error" onClick={() => excluirCapitulo(capitulo)}>
+                                                Apagar
+                                            </Button>
                                         </NavLink>
                                     </TableCell>
                                 </TableRow>

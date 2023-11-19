@@ -1,7 +1,7 @@
 import ijichi from '../../../../public/Ijichi.png'
 import styles from './EmConstrucao.module.scss'
 
-export default function EmConstrucao() {
+export default function UserEmConstrucao() {
     return (
         <div className={styles.divStyled}>
             <div className={styles.divBlockStyled}>

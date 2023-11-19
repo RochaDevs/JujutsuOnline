@@ -8,3 +8,10 @@ export const httpCapitulos = axios.create({
     baseURL: 'https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/capitulos'
 })
 
+export const httpUsuarios = axios.create({
+    baseURL: 'https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/usuarios'
+})
+
+export const httpLogin = axios.create({
+    baseURL: 'https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/login'
+})

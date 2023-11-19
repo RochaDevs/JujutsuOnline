@@ -5,7 +5,7 @@ import styles from './Capitulo.module.scss'
 import { httpCapitulos } from "../../../http";
 import ICapitulos from "../../../interfaces/ICapitulos";
 
-function Capitulo() {
+export default function UserCapitulo() {
 
   const [paginas, setPaginas] = useState<ICapitulos[]>([]);
   const parametros = useParams();
@@ -38,4 +38,3 @@ function Capitulo() {
   );
 }
 
-export default Capitulo;

@@ -1,9 +1,11 @@
+import UserFormCadastro from "../../../Components/ParaUsers/UserFormCadastro"
+import styles from './UserCadastro.module.scss'
 
 
-function Cadastrar() {
+export default function UserCadastrar() {
     return (
-        <h1 style={{color: '#FFF'}} >Cadastrar</h1>
+        <section className={styles.sectionStyled}>
+            <UserFormCadastro />
+        </section>
     )
 }
-
-export default Cadastrar

@@ -1,17 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Inicio from "../Pages/PagesUsers/UserInicio"
-import PaginaError from "../Pages/PagesUsers/UserPageError"
-import Volumes from "../Pages/PagesUsers/UserVolumes"
-import Capitulo from "../Pages/PagesUsers/UserCapitulo"
 import '../app/scss/Main.module.scss'
-import EmConstrucao from "../Components/ParaUsers/UserEmConstrucao"
 import AdmCapas from "../Pages/PagesAdmin/AdminCapas"
-import PaginaPadrao from "../Pages/PagesUsers/UserPagePadrao"
 import Administracao from "../Pages/PagesAdmin/AdminPagePadrao"
 import FormularioCapas from "../Pages/PagesAdmin/AdminCapas/AdmCapasForm"
 import AreaAdmin from "../Pages/PagesAdmin/AreaAdmin"
 import AdmCapitulos from "../Pages/PagesAdmin/AdminCapitulos"
 import FormularioCapitulos from "../Pages/PagesAdmin/AdminCapitulos/AdminCapitulosForm"
+import UserMinhaConta from "../Pages/PagesUsers/UserMinhaConta"
+import UserPaginaPadrao from "../Pages/PagesUsers/UserPagePadrao"
+import UserInicio from "../Pages/PagesUsers/UserInicio"
+import UserEmConstrucao from "../Components/ParaUsers/UserEmConstrucao"
+import UserLogin from "../Pages/PagesUsers/UserLogin"
+import UserCadastrar from "../Pages/PagesUsers/UserCadastro"
+import UserVolumes from "../Pages/PagesUsers/UserVolumes"
+import UserCapitulo from "../Pages/PagesUsers/UserCapitulo"
+import UserPaginaError from "../Pages/PagesUsers/UserPageError"
 
 function AppRoutes() {
 
@@ -21,15 +24,16 @@ function AppRoutes() {
             <main>
 
                 <Routes>
-                    <Route path="/" element={<PaginaPadrao />}>
-                        <Route index element={<Inicio />} />
-                        <Route path='anime' element={<EmConstrucao />} />
-                        <Route path='manga' element={<EmConstrucao />} />
-                        <Route path='login' element={<EmConstrucao />} />
-                        <Route path='cadastrar' element={<EmConstrucao />} />
-                        <Route path="volumes/:volume" element={<Volumes />} />
-                        <Route path="volumes/:volume/:capitulo" element={<Capitulo />} />
-                        <Route path='*' element={<PaginaError children={'Essa página'} />} />
+                    <Route path="/" element={<UserPaginaPadrao />}>
+                        <Route index element={<UserInicio />} />
+                        <Route path='anime' element={<UserEmConstrucao />} />
+                        <Route path='manga' element={<UserEmConstrucao />} />
+                        <Route path='login' element={<UserLogin />} />
+                        <Route path='minha-conta' element={<UserMinhaConta />} />
+                        <Route path='cadastrar' element={<UserCadastrar />} />
+                        <Route path="volumes/:volume" element={<UserVolumes />} />
+                        <Route path="volumes/:volume/:capitulo" element={<UserCapitulo />} />
+                        <Route path='*' element={<UserPaginaError children={'Essa página'} />} />
                     </Route>
 
                     <Route path="/admin" element={<Administracao />}>

@@ -1,9 +1,11 @@
+import UserFormLogin from "../../../Components/ParaUsers/UserFormLogin"
+import styles from './UserLogin.module.scss'
 
 
-function Login() {
+export default function UserLogin() {
     return (
-        <h1 style={{color: '#FFF'}} >Login</h1>
+        <section className={styles.sectionStyled}>
+            <UserFormLogin />
+        </section>
     )
 }
-
-export default Login

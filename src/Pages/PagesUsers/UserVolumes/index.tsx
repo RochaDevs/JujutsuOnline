@@ -5,7 +5,7 @@ import { httpCapas } from "../../../http";
 import ICapas from "../../../interfaces/ICapas";
   
 
-function Volumes() {
+export default function UserVolumes() {
 
     const [capas, setCapas] = useState<ICapas[]>([])
 
@@ -39,5 +39,3 @@ function Volumes() {
 
     )
 }
-
-export default Volumes

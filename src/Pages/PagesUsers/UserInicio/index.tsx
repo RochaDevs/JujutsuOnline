@@ -1,6 +1,6 @@
 import UserCarousel from "../../../Components/ParaUsers/UserCarousel"
 
-function Inicio() {
+export default function UserInicio() {
 
     // let urls = [];
     // for (let i = 2; i <= 50; i++) {
@@ -15,5 +15,3 @@ function Inicio() {
         </section>
     )
 }
-
-export default Inicio

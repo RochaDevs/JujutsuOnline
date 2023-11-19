@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 import Cabecalho from "../../../Components/ParaUsers/UserCabecalho"
 import Rodape from "../../../Components/ParaUsers/UsersRodape"
 
-function PaginaPadrao() {
+export default function UserPaginaPadrao() {
     return (
         <>
             <Cabecalho />
@@ -12,4 +12,3 @@ function PaginaPadrao() {
     )
 }
 
-export default PaginaPadrao

@@ -6,17 +6,15 @@ interface IPaginaError {
     children: string
 }
 
-function PaginaError({children} :IPaginaError) {
+export default function UserPaginaError({children} :IPaginaError) {
 
     const hookNavegation = useNavigate()
 
     return (
         <div className={styles.divStyled}>
-            <img className={styles.imgStyled} src="/src/assets/sukuna.png" alt="Sukuna" />
+            <img className={styles.imgStyled} src="../../../../public/sukuna.png" alt="Sukuna" />
             <h1 className={styles.h1Styled}>Você está ficando louco? {children} nem existe!</h1>
             <Botao action={() => hookNavegation(-1)} titulo={'Voltar'} />
         </div>
     );
 }
-
-export default PaginaError
