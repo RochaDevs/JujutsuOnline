@@ -4,7 +4,7 @@ import styles from './LerManga.module.scss'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import useGetCapas from '../../../hooks/useGetCapas';
+import { useGetCapas } from '../../../hooks/useCapas';
 import UserLoading from '../UserLoading';
 
 function UserCarousel() {

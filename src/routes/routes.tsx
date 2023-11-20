@@ -39,7 +39,7 @@ function AppRoutes() {
                                 <Route path='capitulos-favoritos' element={<UserEmConstrucao />} />
                                 <Route path='meus-dados' element={<UserEmConstrucao />} />
                             </Route>
-                            <Route path='cadastrar' element={<UserCadastrar />} />
+                            <Route path='cadastrar' element={<UserCadastrar />} />                             {/* POST AQUI */}
                             <Route path="volumes/:volume" element={<UserVolumes />} />
                             <Route path="volumes/:volume/:capitulo" element={<UserCapitulo />} />
                             <Route path='*' element={<UserPaginaError children={'Essa página'} />} />

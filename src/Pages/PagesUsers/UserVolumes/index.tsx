@@ -1,29 +1,15 @@
 import { useParams } from "react-router-dom";
 import Volume from "../../../Components/ParaUsers/UserVolume";
-import { useEffect, useState } from "react";
-import { httpCapas } from "../../../http";
-import ICapas from "../../../interfaces/ICapas";
+import { useGetCapas } from "../../../hooks/useCapas";
   
 
 export default function UserVolumes() {
 
-    const [capas, setCapas] = useState<ICapas[]>([])
-
-    useEffect(() => {
-        httpCapas.get<ICapas[]>('')
-            .then(resposta => setCapas(resposta.data))
-    }, [])
-
-    // useEffect(() => {
-    //     console.log(capas)
-    // }, [capas])
-
+    const {data: capas} = useGetCapas()
 
     const parametros = useParams<{ volume: string }>();
 
-    // console.log(parametros)
-
-    const volumeEncontrado = capas.find((capa) => {
+    const volumeEncontrado = capas?.find((capa) => {
         return parametros.volume === capa.volume
     })
 

@@ -1,33 +1,31 @@
 import { Button, Paper, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
-import { httpUsuarios } from "../../../http"
 import { IUsers } from "../../../interfaces/IUsers"
+import { useGetUsuarios } from "../../../hooks/useUsuarios"
 
 
 function UserFormLogin() {
 
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-    const [usuarios, setUsuarios] = useState<IUsers[]>([])
     const [usuarioEncontrado, setUsuarioEncontrado] = useState<IUsers | undefined>()
     const navigate = useNavigate()
+
+    const {data: usuarios} = useGetUsuarios()
 
 
     const aoSubmeterForm = (evento: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         evento.preventDefault()
 
-        httpUsuarios.get('').then((resposta) => {
-            setUsuarios(resposta.data)
-            const userFind = validarUsuario(resposta.data)
-            setUsuarioEncontrado(userFind)
-        })
-
-        const validarUsuario = (usuarios: IUsers[]) => {
-            return usuarios.find((usuario) => {
+        const validarUsuario = (usuarios: IUsers[] | undefined) => {
+            return usuarios?.find((usuario) => {
                 return usuario.email === email && usuario.senha === senha
             })
         }
+
+        const userFind = validarUsuario(usuarios)
+        setUsuarioEncontrado(userFind)
 
     }
 
