@@ -1,6 +1,6 @@
 import { Button, Paper, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { httpUsuarios } from "../../../http"
 import { IUsers } from "../../../interfaces/IUsers"
 
@@ -11,6 +11,7 @@ function UserFormLogin() {
     const [senha, setSenha] = useState('')
     const [usuarios, setUsuarios] = useState<IUsers[]>([])
     const [usuarioEncontrado, setUsuarioEncontrado] = useState<IUsers | undefined>()
+    const navigate = useNavigate()
 
 
     const aoSubmeterForm = (evento: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -34,6 +35,8 @@ function UserFormLogin() {
         if(usuarioEncontrado) {
             sessionStorage.setItem('token', usuarioEncontrado.id);
             console.log(usuarioEncontrado)
+            navigate('/')
+            window.location.reload();
         } else {
             console.log('Usuário não encontrado');
         }
@@ -111,6 +114,7 @@ function UserFormLogin() {
                 label="Senha"
                 variant="outlined"
                 value={senha}
+                type="password"
                 onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenha(evento.target.value)}
             />
             <div style={{ display: "flex", gap: '1rem' }}>

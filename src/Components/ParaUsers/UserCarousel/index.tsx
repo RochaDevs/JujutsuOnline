@@ -1,30 +1,15 @@
 import CapaVolume from './UserCapaDosVolume';
 import { FaReadme } from 'react-icons/fa';
 import styles from './LerManga.module.scss'
-import { useEffect, useState } from 'react';
-import ICapas from '../../../interfaces/ICapas';
-import { httpCapas } from '../../../http';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import useGetCapas from '../../../hooks/useGetCapas';
+import UserLoading from '../UserLoading';
 
 function UserCarousel() {
 
-    const [capas, setCapas] = useState<ICapas[]>([])
-
-    useEffect(() => {
-        httpCapas.get('')
-            .then(resposta => {
-                setCapas(resposta.data)
-            })
-            .catch(erro => {
-                console.log(erro)
-            })
-    }, [])
-
-    useEffect(() => {
-        console.log(capas)
-    }, [capas])
+    const { data: capas, isLoading } = useGetCapas();
 
     const sliderSettings = {
         dots: true,
@@ -36,24 +21,32 @@ function UserCarousel() {
 
     return (
         <div className={styles.divStyled}>
-
             <h1 className={styles.h1Styled}>
                 <FaReadme />
                 Ler Mangá
             </h1>
 
             <Slider {...sliderSettings}>
-                {capas.map((capa) => (
-                    <CapaVolume
-                        key={capa.volume} // Usar 'id' como chave única
-                        url={capa.url}
-                        descricao={capa.descricao}
-                        titulo={capa.titulo}
-                        volume={capa.volume}
-                    />
-                ))}
-            </Slider>
+                {isLoading ? (
+                    // Exibir placeholders de carregamento
+                    Array.from({ length: 6 }).map((_, index) => (
 
+                        <UserLoading key={index} />
+
+                    ))
+                ) : (
+                    // Exibir as capas
+                    capas?.map(capa => (
+                        <CapaVolume
+                            key={capa.id} // Supondo que 'capa' tem um campo 'id'
+                            url={capa.url}
+                            descricao={capa.descricao}
+                            titulo={capa.titulo}
+                            volume={capa.volume}
+                        />
+                    ))
+                )}
+            </Slider>
         </div>
     );
 }
