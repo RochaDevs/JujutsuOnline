@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import ICapitulos from "../interfaces/ICapitulos";
 import { httpCapitulos } from "../http";
 
@@ -12,5 +12,47 @@ export const useGetCapitulos = (id?: string) => {
                 return httpCapitulos.get('').then(resposta => resposta.data)}
         },
         enabled: id !== undefined, // Executa automaticamente se id for fornecido
+    });
+};
+
+export const useDeleteCapitulo = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: (capituloAhSerExcluido: string) => httpCapitulos.delete(`/${capituloAhSerExcluido}`),
+        onSuccess: () => {
+            // Invalida a query de capas para forçar uma atualização
+            queryClient.invalidateQueries({ queryKey: ['capitulos'] });
+
+            alert('Capítulo deletado com sucesso');
+        },
+    });
+};
+
+export const usePutCapitulo = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: (dados: {capituloAhSerEditado: ICapitulos, paramsID: string}) => httpCapitulos.put(`/${dados.paramsID}`, dados.capituloAhSerEditado),
+        onSuccess: () => {
+            // Invalida a query de capas para forçar uma atualização
+            queryClient.invalidateQueries({ queryKey: ['capitulos'] });
+
+            alert('Capítulo atualizado com sucesso');
+        },
+    });
+};
+
+export const usePostCapitulo = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: (dados: ICapitulos) => httpCapitulos.post('', dados),
+        onSuccess: () => {
+            // Invalida a query de capas para forçar uma atualização
+            queryClient.invalidateQueries({ queryKey: ['capitulos'] });
+
+            alert('Capítulo adicionada com sucesso');
+        },
     });
 };

@@ -1,8 +1,8 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material"
 import { useState, useEffect } from 'react'
-import { httpCapitulos } from "../../../../http"
 import { useNavigate, useParams } from "react-router-dom"
-import { useGetCapitulos } from "../../../../hooks/useCapitulos"
+import { useGetCapitulos, usePostCapitulo, usePutCapitulo } from "../../../../hooks/useCapitulos"
+import ICapitulos from "../../../../interfaces/ICapitulos"
 
 function FormularioCapitulos() {
 
@@ -13,15 +13,19 @@ function FormularioCapitulos() {
     const parametros = useParams()
     const hookNavegation = useNavigate()
     const { data: capitulos } = useGetCapitulos(parametros.id)
+    const {mutate: capituloPut} = usePutCapitulo()
+    const {mutate: capituloPost} = usePostCapitulo()
 
 
     useEffect(() => {
 
+        const capituloEncontrado = capitulos as ICapitulos
+
         if (parametros.id && capitulos) {
 
-            setCapitulo(capitulos.capitulo)
-            setCapituloID(capitulos.capituloID)
-            setUrls(capitulos.urls)
+            setCapitulo(capituloEncontrado.capitulo)
+            setCapituloID(capituloEncontrado.capituloID)
+            setUrls(capituloEncontrado.urls)
 
         }
 
@@ -30,24 +34,19 @@ function FormularioCapitulos() {
     const aoSubmeterForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
+        const dadosCapitulo = {
+            capitulo: capitulo,
+            capituloID: capituloID,
+            urls: urls
+        }
+
         if (parametros.id) {
-            httpCapitulos.put(`/${parametros.id}`, {
-                capitulo: capitulo,
-                capituloID: capituloID,
-                urls: urls
-            }).then(() => {
-                alert('Capítulo atualizado com sucesso')
-            })
+
+            capituloPut({capituloAhSerEditado: dadosCapitulo, paramsID: parametros.id})
 
         } else {
 
-            httpCapitulos.post('', {
-                capitulo: capitulo,
-                capituloID: capituloID,
-                urls: urls
-            }).then(() => {
-                alert('Novo capítulo adicionado com sucesso')
-            })
+            capituloPost(dadosCapitulo)
         }
 
     }

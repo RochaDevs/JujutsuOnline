@@ -1,28 +1,17 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 import { NavLink } from "react-router-dom"
-import { useState, useEffect } from 'react'
 import styles from './AdmCapitulos.module.scss'
-import { httpCapitulos } from "../../../http"
 import ICapitulo from "../../../interfaces/ICapitulos"
 import AdminPOST from "../../../Components/ParaAdmin/AdminPOST"
+import { useDeleteCapitulo, useGetCapitulos } from "../../../hooks/useCapitulos"
 
 function AdmCapitulos() {
 
-    const [capitulos, setCapitulos] = useState<ICapitulo[]>([])
+    const {data: capitulos} = useGetCapitulos()
+    const {mutate: capituloDelete} = useDeleteCapitulo()
 
-    useEffect(() => {
-        httpCapitulos.get('')
-            .then(resposta => {
-                setCapitulos(resposta.data)
-            })
-    }, [])
-
-    function excluirCapitulo(capituloAhSerExcluido: ICapitulo) {
-        httpCapitulos.delete(`${capituloAhSerExcluido.id}`)
-            .then(() => {
-                const listaCapitulos = capitulos.filter((capitulo) => capitulo.id !== capituloAhSerExcluido.id )
-                setCapitulos([...listaCapitulos])
-            })
+    function excluirCapitulo(capituloAhSerExcluido: string) {
+        capituloDelete(capituloAhSerExcluido)
     }
 
     return (
@@ -49,7 +38,7 @@ function AdmCapitulos() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {capitulos.map((capitulo) =>
+                            {Array.isArray(capitulos) && capitulos?.map((capitulo: ICapitulo) =>
                                 <TableRow key={capitulo.id}>
                                     <TableCell>{capitulo.capitulo}</TableCell>
                                     <TableCell align="right">
@@ -59,7 +48,7 @@ function AdmCapitulos() {
                                     </TableCell>
                                     <TableCell align="right">
                                         <NavLink to={''}>
-                                            <Button size="small" color="error" onClick={() => excluirCapitulo(capitulo)}>
+                                            <Button size="small" color="error" onClick={() => excluirCapitulo(capitulo.id)}>
                                                 Apagar
                                             </Button>
                                         </NavLink>
