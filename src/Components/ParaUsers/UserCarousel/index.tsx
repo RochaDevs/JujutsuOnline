@@ -10,6 +10,7 @@ import UserLoading from '../UserLoading';
 function UserCarousel() {
 
     const { data: capas, isLoading } = useGetCapas();
+    console.log(capas)
 
     const sliderSettings = {
         dots: true,
@@ -34,7 +35,7 @@ function UserCarousel() {
                         <UserLoading key={index} />
 
                     ))
-                ) : (
+                ) : Array.isArray(capas) ? (
                     // Exibir as capas
                     capas?.map(capa => (
                         <CapaVolume
@@ -45,7 +46,7 @@ function UserCarousel() {
                             volume={capa.volume}
                         />
                     ))
-                )}
+                ): null}
             </Slider>
         </div>
     );

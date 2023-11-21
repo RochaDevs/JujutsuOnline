@@ -2,7 +2,7 @@ import { Box, Button, Paper, TextField, Typography } from "@mui/material"
 import { useState, useEffect } from 'react'
 import { httpCapitulos } from "../../../../http"
 import { useNavigate, useParams } from "react-router-dom"
-import ICapitulos from "../../../../interfaces/ICapitulos"
+import { useGetCapitulos } from "../../../../hooks/useCapitulos"
 
 function FormularioCapitulos() {
 
@@ -11,23 +11,21 @@ function FormularioCapitulos() {
     const [urls, setUrls] = useState('')
 
     const parametros = useParams()
+    const hookNavegation = useNavigate()
+    const { data: capitulos } = useGetCapitulos(parametros.id)
 
-    console.log(parametros)
 
     useEffect(() => {
 
-        if (parametros.id) {
-            httpCapitulos.get<ICapitulos>(`/${parametros.id}`)
-                .then(resposta => {
-                    setCapitulo(resposta.data.capitulo)
-                    setCapituloID(resposta.data.capituloID)
-                    setUrls(resposta.data.urls)
-                })
+        if (parametros.id && capitulos) {
+
+            setCapitulo(capitulos.capitulo)
+            setCapituloID(capitulos.capituloID)
+            setUrls(capitulos.urls)
+
         }
 
-    }, [parametros])
-
-    const hookNavegation = useNavigate()
+    }, [parametros.id, capitulos])
 
     const aoSubmeterForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()

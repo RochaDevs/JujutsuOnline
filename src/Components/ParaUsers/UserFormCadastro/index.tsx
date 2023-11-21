@@ -1,6 +1,6 @@
 import { Button, Paper, TextField, Typography } from "@mui/material"
 import {useState} from 'react'
-import { httpUsuarios } from "../../../http"
+import { usePostUsuario } from "../../../hooks/useUsuarios"
 
 function UserFormCadastro() {
 
@@ -8,6 +8,7 @@ function UserFormCadastro() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [confirmacaoSenha, setConfirmacaoSenha] = useState('')
+    const {mutate} = usePostUsuario()
 
     const limparForm = () => {
         setNomeCompleto('')
@@ -19,17 +20,16 @@ function UserFormCadastro() {
     const aoSubmeterForm = (evento: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         evento.preventDefault()
 
-        httpUsuarios.post('', {
+        const novoUsuario = {
             nomeCompleto: nomeCompleto,
             email: email,
             senha: senha,
             confirmacaoSenha: confirmacaoSenha
-        }).then(() => {
-            alert('Cadastro feito com sucesso!')
-            limparForm()
-        }).catch(() => {
-            console.log('Algo deu errado')
-        })
+        }
+
+        mutate(novoUsuario)
+
+        limparForm()
     }
 
     return (

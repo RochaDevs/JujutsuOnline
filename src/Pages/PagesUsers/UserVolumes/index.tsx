@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import Volume from "../../../Components/ParaUsers/UserVolume";
 import { useGetCapas } from "../../../hooks/useCapas";
+import ICapas from "../../../interfaces/ICapas";
   
 
 export default function UserVolumes() {
@@ -9,11 +10,9 @@ export default function UserVolumes() {
 
     const parametros = useParams<{ volume: string }>();
 
-    const volumeEncontrado = capas?.find((capa) => {
-        return parametros.volume === capa.volume
-    })
-
-    console.log(volumeEncontrado)
+    const volumeEncontrado = Array.isArray(capas) ? capas.find((capa: ICapas) => {
+        return parametros.volume === capa.volume 
+    }) : null
 
     return (
 

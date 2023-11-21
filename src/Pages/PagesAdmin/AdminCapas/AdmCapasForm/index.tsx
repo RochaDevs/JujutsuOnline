@@ -2,8 +2,8 @@ import { TextField, Button, Typography, Box, Paper } from "@mui/material"
 import styles from './FormularioCapas.module.scss'
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { useGetCapas, usePostCapa, usePutCapa } from "../../../../hooks/useCapas"
 import ICapas from "../../../../interfaces/ICapas"
-import { httpCapas } from "../../../../http"
 
 function FormularioCapas() {
 
@@ -13,6 +13,12 @@ function FormularioCapas() {
     const [url, setUrl] = useState('')
     const [capitulos, setCapitulos] = useState('')
 
+    const parametros = useParams()
+    const hookNavegation = useNavigate()
+    const { data: capas } = useGetCapas(parametros.id)
+    const { mutate: mutatePut } = usePutCapa()
+    const {mutate: mutatePost} = usePostCapa()
+
     const limparFormulario = () => {
         setTitulo('');
         setVolume('');
@@ -21,56 +27,43 @@ function FormularioCapas() {
         setCapitulos('');
     };
 
-    const parametros = useParams()
-
-    console.log(parametros)
-
     useEffect(() => {
-        if (parametros.id) {
-            httpCapas.get<ICapas>(`/${parametros.id}`)
-                .then(resposta => {
-                    setTitulo(resposta.data.titulo),
-                    setVolume(resposta.data.volume),
-                    setDescricao(resposta.data.descricao),
-                    setUrl(resposta.data.url)
-                    if (resposta.data.capitulos !== undefined) {
-                        setCapitulos(resposta.data.capitulos);
-                    }
-                })
+        if (parametros.id && capas) {
+
+            const capaSelecionada = capas as ICapas;
+
+            setTitulo(capaSelecionada.titulo),
+                setVolume(capaSelecionada.volume),
+                setDescricao(capaSelecionada.descricao),
+                setUrl(capaSelecionada.url)
+
+            if (capaSelecionada.capitulos !== undefined) {
+                setCapitulos(capaSelecionada.capitulos);
+            }
+
         }
-    }, [parametros])
-
-
-    const hookNavegation = useNavigate()
+    }, [parametros.id, capas])
 
     const aoSubmeterForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
+        const dadosCapa: ICapas = {
+            // Supondo que ICapas tenha essas propriedades
+            titulo: titulo,
+            volume: volume,
+            descricao: descricao,
+            url: url,
+            capitulos: capitulos
+        };
+
         if (parametros.id) {
 
-            httpCapas.put(`/${parametros.id}`, {
-                titulo: titulo,
-                volume: volume,
-                descricao: descricao,
-                url: url,
-                capitulos: capitulos
-            }).then(() => {
-                alert('Volume atualizado com sucesso'),
-                    limparFormulario()
-            })
+            mutatePut({ capaAhSerEditada: dadosCapa, paramsID: parametros.id });
 
         } else {
 
-            httpCapas.post('', {
-                titulo: titulo,
-                volume: volume,
-                descricao: descricao,
-                url: url,
-                capitulos: capitulos
-            }).then(() => {
-                alert('Novo volume cadastrado com sucesso'),
-                    limparFormulario()
-            })
+            mutatePost(dadosCapa)
+            limparFormulario()
 
         }
 

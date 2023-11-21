@@ -1,25 +1,17 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PaginaError from "../UserPageError";
 import styles from './Capitulo.module.scss'
-import { httpCapitulos } from "../../../http";
+import { useGetCapitulos } from "../../../hooks/useCapitulos";
 import ICapitulos from "../../../interfaces/ICapitulos";
 
 export default function UserCapitulo() {
 
-  const [paginas, setPaginas] = useState<ICapitulos[]>([]);
   const parametros = useParams();
+  const {data: capitulos} = useGetCapitulos()
 
-  useEffect(() => {
-    httpCapitulos.get('')
-      .then(resposta => {setPaginas(resposta.data), console.log(paginas)})
-  }, [])
-
-  console.log(parametros)
-
-  const capituloEncontrado = paginas.find((pagina) => {
-    return pagina.capituloID === parametros.capitulo
-  })
+  const capituloEncontrado = Array.isArray(capitulos) ? capitulos.find((capitulo: ICapitulos) => {
+    return capitulo.capituloID === parametros.capitulo
+  }): null
 
   if (!capituloEncontrado) {
     return (

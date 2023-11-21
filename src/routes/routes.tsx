@@ -39,7 +39,7 @@ function AppRoutes() {
                                 <Route path='capitulos-favoritos' element={<UserEmConstrucao />} />
                                 <Route path='meus-dados' element={<UserEmConstrucao />} />
                             </Route>
-                            <Route path='cadastrar' element={<UserCadastrar />} />                             {/* POST AQUI */}
+                            <Route path='cadastrar' element={<UserCadastrar />} />                       
                             <Route path="volumes/:volume" element={<UserVolumes />} />
                             <Route path="volumes/:volume/:capitulo" element={<UserCapitulo />} />
                             <Route path='*' element={<UserPaginaError children={'Essa página'} />} />
@@ -47,7 +47,7 @@ function AppRoutes() {
 
                         <Route path="/admin" element={<Administracao />}>
                             <Route index element={<AreaAdmin />} />
-                            <Route path='capas' element={<AdmCapas />} />
+                            <Route path='capas' element={<AdmCapas />} />                  
                             <Route path='capas/:id' element={<FormularioCapas />} />
                             <Route path='capas/novo' element={<FormularioCapas />} />
                             <Route path='capitulos' element={<AdmCapitulos />} />

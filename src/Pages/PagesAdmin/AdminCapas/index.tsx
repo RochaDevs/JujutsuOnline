@@ -1,35 +1,18 @@
-import { useEffect, useState } from 'react'
 import styles from './AdmCapas.module.scss'
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material'
-import ICapas from '../../../interfaces/ICapas'
 import { NavLink } from 'react-router-dom'
-import { httpCapas } from '../../../http'
 import AdminPOST from '../../../Components/ParaAdmin/AdminPOST'
+import { useDeleteCapa, useGetCapas } from '../../../hooks/useCapas'
 
 
 
 function AdmCapas() {
 
-    const [capas, setCapas] = useState<ICapas[]>([])
+    const { data: capas } = useGetCapas();
+    const { mutate } = useDeleteCapa();
 
-    useEffect(() => {
-        httpCapas.get<ICapas[]>('')
-            .then(resposta => {
-                setCapas(resposta.data)
-            })
-
-    }, [])
-
-    useEffect(() => {
-        console.log(capas);
-    }, [capas]);
-
-    const excluirCapa = (capaAhSerExcluida: ICapas) => {
-        httpCapas.delete(`/${capaAhSerExcluida.id}`)
-            .then(() => {
-                const listaCapas = capas.filter(capa => capa.id !== capaAhSerExcluida.id)
-                setCapas([...listaCapas])
-            })
+    const excluirCapa = (capaAhSerExcluida: string) => {
+        mutate(capaAhSerExcluida);
     }
 
     return (
@@ -47,7 +30,7 @@ function AdmCapas() {
             <div className={styles.containerStyled}>
 
                 <div className={styles.mainStyled}>
-                    {capas.length > 0 && capas.map((volume) => (
+                    {Array.isArray(capas) && capas.length > 0 && capas.map((volume) => (
                         <Card
                             key={volume.id}
                             sx={{
@@ -77,9 +60,7 @@ function AdmCapas() {
                                 <NavLink to={`/admin/capas/${volume.id}`}>
                                     <Button size='small'>Editar</Button>
                                 </NavLink>
-                                <NavLink>
-                                    <Button color='error' size='small' onClick={() => excluirCapa(volume)}>Apagar</Button>
-                                </NavLink>
+                                <Button color='error' size='small' onClick={() => excluirCapa(volume.id)}>Apagar</Button>
                             </CardActions>
                         </Card>
                     ))}
