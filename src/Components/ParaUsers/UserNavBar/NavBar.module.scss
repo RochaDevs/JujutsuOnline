@@ -20,6 +20,10 @@
         
     }
 
+    .MenuMobile {
+        display: none;
+    }
+
     .divTwoStyled {
         display: flex;
         align-items: center;
@@ -29,13 +33,32 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     /* Estilos para telas menores (até 500px de largura) */
 
     .navStyled {
-        width: max-content;
-        height: auto; /* Para permitir que a altura se ajuste automaticamente ao conteúdo */
         margin: 0rem;
-        box-sizing: border-box;
+        
+        .divOneStyled {
+            display: none;
+        }  
+
+        .MenuMobile {
+            display: block;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+
+            .imgStyled {
+                width: 150px;
+                position: relative;
+                top: 5px;
+            }
+        }
+
+        .divTwoStyled {
+            display: none;
+        }
     }
 }

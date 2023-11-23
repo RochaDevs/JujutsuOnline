@@ -9,6 +9,18 @@ import { useDeleteCapa, useGetCapas } from '../../../hooks/useCapas'
 function AdmCapas() {
 
     const { data: capas } = useGetCapas();
+
+    const ordemCapas = () => {
+        if (Array.isArray(capas)) {
+            capas.sort((a, b) => {
+                return Number(a.volume) - Number(b.volume);
+            });
+            return capas; // retorna o array ordenado
+        }
+    }
+    
+    console.log(ordemCapas())
+
     const { mutate } = useDeleteCapa();
 
     const excluirCapa = (capaAhSerExcluida: string) => {

@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom"
-import Cabecalho from "../../../Components/ParaUsers/UserCabecalho"
 import Rodape from "../../../Components/ParaUsers/UsersRodape"
+import UserCabecalho from "../../../Components/ParaUsers/UserCabecalho"
 
 export default function UserPaginaPadrao() {
     return (
         <>
-            <Cabecalho />
+            <UserCabecalho />
             <Outlet />
             <Rodape />
         </>

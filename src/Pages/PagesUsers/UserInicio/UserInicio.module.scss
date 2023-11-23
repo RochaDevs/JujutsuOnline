@@ -1,0 +1,12 @@
+.sectionStyled {
+    width: 100%;
+    padding: 0rem 1rem;
+}
+
+@media (max-width: 600px) {
+    /* Estilos para telas menores (até 500px de largura) */
+    .sectionStyled {
+        width: 100vh;
+        padding: 0rem 1rem;
+    }
+}

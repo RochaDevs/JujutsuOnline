@@ -1,15 +1,16 @@
-import NavBar from "../UserNavBar";
+
 import logo from './logo.png';
 import { FaReadme, FaPlay, FaHome} from 'react-icons/fa';
 import { BiLogIn } from 'react-icons/bi';
 import styles from './Cabecalho.module.scss'
+import UserNavBar from "../UserNavBar";
 
 
-function Cabecalho() {
+function UserCabecalho() {
 
     return (
         <header className={styles.headerStyled}>
-            <NavBar                 
+            <UserNavBar                 
                 logo={logo}
                 link1={<div className={styles.divStyled} ><FaHome size={20} />INÍCIO</div>}
                 link2={<div className={styles.divStyled} ><FaPlay />ANIME</div>}
@@ -20,4 +21,4 @@ function Cabecalho() {
     );
 }
 
-export default Cabecalho
+export default UserCabecalho

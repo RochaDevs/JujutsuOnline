@@ -8,6 +8,18 @@ import { useDeleteCapitulo, useGetCapitulos } from "../../../hooks/useCapitulos"
 function AdmCapitulos() {
 
     const {data: capitulos} = useGetCapitulos()
+
+    const ordemCapas = () => {
+        if (Array.isArray(capitulos)) {
+            capitulos.sort((a, b) => {
+                return parseInt(a.capituloID) - parseInt(b.capituloID);
+            });
+            return capitulos; // retorna o array ordenado
+        }
+    }
+
+    ordemCapas()
+
     const {mutate: capituloDelete} = useDeleteCapitulo()
 
     function excluirCapitulo(capituloAhSerExcluido: string) {

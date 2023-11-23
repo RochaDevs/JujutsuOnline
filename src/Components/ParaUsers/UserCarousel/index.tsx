@@ -10,7 +10,17 @@ import UserLoading from '../UserLoading';
 function UserCarousel() {
 
     const { data: capas, isLoading } = useGetCapas();
-    console.log(capas)
+
+    const ordemCapas = () => {
+        if (Array.isArray(capas)) {
+            capas.sort((a, b) => {
+                return Number(a.volume) - Number(b.volume);
+            });
+            return capas; // retorna o array ordenado
+        }
+    }
+
+    ordemCapas()
 
     const sliderSettings = {
         dots: true,
@@ -18,7 +28,45 @@ function UserCarousel() {
         speed: 500,
         slidesToShow: 6,
         slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1250, 
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 1100,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 720, // Celulares
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 550, // Celulares
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
+
 
     return (
         <div className={styles.divStyled}>
@@ -46,7 +94,7 @@ function UserCarousel() {
                             volume={capa.volume}
                         />
                     ))
-                ): null}
+                ) : null}
             </Slider>
         </div>
     );

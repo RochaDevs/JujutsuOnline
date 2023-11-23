@@ -11,7 +11,6 @@ export const useGetCapitulos = (id?: string) => {
             } else {
                 return httpCapitulos.get('').then(resposta => resposta.data)}
         },
-        enabled: id !== undefined, // Executa automaticamente se id for fornecido
     });
 };
 

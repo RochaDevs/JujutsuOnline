@@ -7,17 +7,15 @@
 
     .divStyled {
         display: flex;
-        gap: 6px;
+        gap: 0.375rem;
         align-items: center;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     /* Estilos para telas menores (até 500px de largura) */
     .headerStyled {
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        width: max-content;
+        width: 100vh;
+        height: 10vh;
     }
 }

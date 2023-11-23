@@ -47,6 +47,9 @@ function FormularioCapitulos() {
         } else {
 
             capituloPost(dadosCapitulo)
+            setCapitulo('')
+            setCapituloID('')
+            setUrls('')
         }
 
     }
