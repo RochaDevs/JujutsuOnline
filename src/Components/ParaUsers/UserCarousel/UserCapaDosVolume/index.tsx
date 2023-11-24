@@ -15,7 +15,7 @@ interface ICapaVolume {
 function CapaVolume({ titulo, descricao, url, volume }: ICapaVolume) {
 
     const token = sessionStorage.getItem('token')
-    const [usuarioEstaLogado, setUsuarioEstaLogado] = useState<boolean>(token !== null)
+    const [usuarioEstaLogado] = useState<boolean>(token !== null)
     const [favoritado, setFavoritado] = useState<boolean>(false);
 
     function aoClicarNoBotao() {

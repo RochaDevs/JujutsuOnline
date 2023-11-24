@@ -31,14 +31,13 @@ function UserFormLogin() {
 
     useEffect(() => {
         if(usuarioEncontrado) {
-            sessionStorage.setItem('token', usuarioEncontrado.id);
-            console.log(usuarioEncontrado)
+            sessionStorage.setItem('token', usuarioEncontrado.id as string);
             navigate('/')
             window.location.reload();
         } else {
             console.log('Usuário não encontrado');
         }
-    }, [usuarioEncontrado]);
+    }, [usuarioEncontrado, navigate]);
 
     return (
         <Paper sx={{

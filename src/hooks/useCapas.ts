@@ -19,7 +19,7 @@ export const useDeleteCapa = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: (capaAhSerExcluida: string) => httpCapas.delete(`/${capaAhSerExcluida}`),
+        mutationFn: (capaAhSerExcluida: string | undefined) => httpCapas.delete(`/${capaAhSerExcluida}`),
         onSuccess: () => {
             // Invalida a query de capas para forçar uma atualização
             queryClient.invalidateQueries({ queryKey: ['capas'] });

@@ -5,5 +5,5 @@ export default interface ICapas {
     titulo: string
     descricao: string
     url: string
-    capitulos?: string 
+    capitulos?: string | undefined 
 }

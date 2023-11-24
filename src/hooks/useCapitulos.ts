@@ -18,7 +18,7 @@ export const useDeleteCapitulo = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: (capituloAhSerExcluido: string) => httpCapitulos.delete(`/${capituloAhSerExcluido}`),
+        mutationFn: (capituloAhSerExcluido: string | undefined) => httpCapitulos.delete(`/${capituloAhSerExcluido}`),
         onSuccess: () => {
             // Invalida a query de capas para forçar uma atualização
             queryClient.invalidateQueries({ queryKey: ['capitulos'] });

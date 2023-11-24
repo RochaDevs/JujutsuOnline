@@ -23,7 +23,7 @@ function AdmCapas() {
 
     const { mutate } = useDeleteCapa();
 
-    const excluirCapa = (capaAhSerExcluida: string) => {
+    const excluirCapa = (capaAhSerExcluida: string | undefined) => {
         mutate(capaAhSerExcluida);
     }
 

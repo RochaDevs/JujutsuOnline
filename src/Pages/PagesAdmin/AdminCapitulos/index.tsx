@@ -22,7 +22,7 @@ function AdmCapitulos() {
 
     const {mutate: capituloDelete} = useDeleteCapitulo()
 
-    function excluirCapitulo(capituloAhSerExcluido: string) {
+    function excluirCapitulo(capituloAhSerExcluido: string | undefined) {
         capituloDelete(capituloAhSerExcluido)
     }
 
