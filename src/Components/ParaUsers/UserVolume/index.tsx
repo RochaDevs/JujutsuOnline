@@ -33,7 +33,7 @@ function Volume({ volumeEncontrado }: VolumeProps) {
                 </div>
             </section>
             <div className={styles.divCapitulosStyled}>
-                {volumeEncontrado && SeparadorStrings(volumeEncontrado).map((string: string) => {
+                {volumeEncontrado && SeparadorStrings(volumeEncontrado)!.map((string: string) => {
                     return (
                         <NavLink
                             className={styles.navLinkStyled}
