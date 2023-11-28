@@ -11,3 +11,16 @@
         width: 60%;
     }
 }
+
+
+@media (max-width: 600px) {
+    /* Estilos para telas menores (até 500px de largura) */
+
+    .divStyled {
+        margin: 0rem;
+
+        .imgStyled {
+            width: 100%;
+        }
+    }
+}
