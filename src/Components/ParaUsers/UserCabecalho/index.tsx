@@ -1,9 +1,12 @@
 
 import logo from './logo.png';
-import { FaReadme, FaPlay, FaHome} from 'react-icons/fa';
-import { BiLogIn } from 'react-icons/bi';
 import styles from './Cabecalho.module.scss'
 import UserNavBar from "../UserNavBar";
+import PersonIcon from '@mui/icons-material/Person';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import HomeIcon from '@mui/icons-material/Home';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 
 function UserCabecalho() {
@@ -12,10 +15,11 @@ function UserCabecalho() {
         <header className={styles.headerStyled}>
             <UserNavBar                 
                 logo={logo}
-                link1={<div className={styles.divStyled} ><FaHome size={20} />INÍCIO</div>}
-                link2={<div className={styles.divStyled} ><FaPlay />ANIME</div>}
-                link3={<div className={styles.divStyled} ><FaReadme />MANGÁ</div>}
-                icone1={<div className={styles.divStyled} ><BiLogIn size={26}/></div>}
+                link1={<HomeIcon />}
+                link2={<PlayArrowIcon />}
+                link3={<MenuBookIcon />}
+                link4={<AdminPanelSettingsIcon />}
+                icone1={<PersonIcon/>}
             />
         </header>
     );

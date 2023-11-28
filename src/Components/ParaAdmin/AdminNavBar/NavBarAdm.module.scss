@@ -20,3 +20,10 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    /* Estilos para telas menores (até 500px de largura) */
+    .navStyled {
+        width: 100%;
+    }
+}

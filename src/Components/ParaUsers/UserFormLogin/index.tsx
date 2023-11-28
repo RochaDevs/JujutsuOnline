@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { IUsers } from "../../../interfaces/IUsers"
 import { useGetUsuarios } from "../../../hooks/useUsuarios"
+import styles from './UserFormLogin.module.scss'
 
 
 function UserFormLogin() {
@@ -12,10 +13,10 @@ function UserFormLogin() {
     const [usuarioEncontrado, setUsuarioEncontrado] = useState<IUsers | undefined>()
     const navigate = useNavigate()
 
-    const {data: usuarios} = useGetUsuarios()
+    const { data: usuarios } = useGetUsuarios()
 
 
-    const aoSubmeterForm = (evento: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const aoSubmeterForm = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault()
 
         const validarUsuario = (usuarios: IUsers[] | undefined) => {
@@ -30,7 +31,7 @@ function UserFormLogin() {
     }
 
     useEffect(() => {
-        if(usuarioEncontrado) {
+        if (usuarioEncontrado) {
             sessionStorage.setItem('token', usuarioEncontrado.id as string);
             navigate('/')
             window.location.reload();
@@ -49,79 +50,107 @@ function UserFormLogin() {
             justifyContent: 'center',
             gap: '1rem',
             backgroundColor: '#272829',
+            '@media (max-width: 600px)': {
+                width: '90%',
+                height: '80%'
+            }
         }}>
             <Typography
                 color={'#FFF'}>
                 Faça aqui o seu login
             </Typography>
-            <TextField
-                sx={{
-                    width: '50%',
-                    '& label.Mui-focused': {
-                        color: 'red', // Substitua 'corDaLabelFocada' pela cor desejada para a label quando focada
-                    },
-                    '& .MuiInputLabel-root': {
-                        color: 'red', // Cor da label
-                    },
-                    '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
-                            borderColor: '#CFD2CF', // Cor da borda
-                        },
-                        '&:hover fieldset': {
-                            borderColor: 'red', // Cor da borda ao passar o mouse
-                        },
-                        '&.Mui-focused fieldset': {
-                            borderColor: 'red', // Cor da borda quando focada
-                        },
-                        '& input': {
-                            color: '#CFD2CF', // Cor das letras digitadas
-                        }
-                    }
-                }}
-                label="E-mail"
-                variant="outlined"
-                value={email}
-                onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setEmail(evento.target.value)}
-            />
 
-            <TextField
-                sx={{
-                    width: '50%',
-                    '& label.Mui-focused': {
-                        color: 'red', // Substitua 'corDaLabelFocada' pela cor desejada para a label quando focada
-                    },
-                    '& .MuiInputLabel-root': {
-                        color: 'red', // Cor da label
-                    },
-                    '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
-                            borderColor: '#CFD2CF', // Cor da borda
+            <form className={styles.formStyled} onSubmit={aoSubmeterForm}>
+                <TextField
+                    sx={{
+                        width: '80%',
+                        '& label.Mui-focused': {
+                            color: 'red', // Substitua 'corDaLabelFocada' pela cor desejada para a label quando focada
                         },
-                        '&:hover fieldset': {
-                            borderColor: 'red', // Cor da borda ao passar o mouse
+                        '& .MuiInputLabel-root': {
+                            color: 'red', // Cor da label
                         },
-                        '&.Mui-focused fieldset': {
-                            borderColor: 'red', // Cor da borda quando focada
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: '#CFD2CF', // Cor da borda
+                            },
+                            '&:hover fieldset': {
+                                borderColor: 'red', // Cor da borda ao passar o mouse
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: 'red', // Cor da borda quando focada
+                            },
+                            '& input': {
+                                color: '#CFD2CF', // Cor das letras digitadas
+                            }
                         },
-                        '& input': {
-                            color: '#CFD2CF', // Cor das letras digitadas
+                        '@media (max-width: 600px)': {
+                            width: '80%',
                         }
-                    }
-                }}
-                label="Senha"
-                variant="outlined"
-                value={senha}
-                type="password"
-                onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenha(evento.target.value)}
-            />
-            <div style={{ display: "flex", gap: '1rem' }}>
-                <NavLink to={'/cadastrar'}>
-                    <Button color="error" variant="outlined">Cadastrar</Button>
-                </NavLink>
-                <Button color="error" variant="outlined" onClick={aoSubmeterForm}>
-                    Login
-                </Button>
-            </div>
+                    }}
+                    label="E-mail"
+                    variant="outlined"
+                    value={email}
+                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setEmail(evento.target.value)}
+                    required
+                />
+
+                <TextField
+                    sx={{
+                        width: '80%',
+                        '& label.Mui-focused': {
+                            color: 'red', // Substitua 'corDaLabelFocada' pela cor desejada para a label quando focada
+                        },
+                        '& .MuiInputLabel-root': {
+                            color: 'red', // Cor da label
+                        },
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: '#CFD2CF', // Cor da borda
+                            },
+                            '&:hover fieldset': {
+                                borderColor: 'red', // Cor da borda ao passar o mouse
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: 'red', // Cor da borda quando focada
+                            },
+                            '& input': {
+                                color: '#CFD2CF', // Cor das letras digitadas
+                            }
+                        },
+                        '@media (max-width: 600px)': {
+                            width: '80%'
+                        }
+                    }}
+                    label="Senha"
+                    variant="outlined"
+                    value={senha}
+                    type="password"
+                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenha(evento.target.value)}
+                    required
+                />
+                <div className={styles.divStyled}>
+                    <NavLink to={'/cadastrar'}>
+                        <Button sx={{
+                            '@media (max-width: 600px)': {
+                                width: '100%',
+                                padding: '0rem 3rem'
+                            }
+                        }} color="error" variant="outlined">
+                            Cadastrar
+                        </Button>
+                    </NavLink>
+                    <Button sx={{
+                        '@media (max-width: 600px)': {
+                            width: '100%',
+                            padding: '0rem 3rem'
+                        }
+                    }} color="error" variant="outlined" type="submit">
+                        Login
+                    </Button>
+                </div>
+            </form>
+
         </Paper>
     )
 }
