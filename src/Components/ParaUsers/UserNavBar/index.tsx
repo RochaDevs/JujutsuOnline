@@ -46,6 +46,7 @@ function UserNavBar({ logo, link1, link2, link3, icone1 }: INavBar) {
                 <NavLinkStyled to={'/'} >{link1}</NavLinkStyled>
                 <NavLinkStyled to={'/anime'} >{link2}</NavLinkStyled>
                 <NavLinkStyled to={'/manga'} >{link3}</NavLinkStyled>
+                <NavLinkStyled to={'/admin'} > Admin</NavLinkStyled>
             </div>
             <div className={styles.MenuMobile}>
                 <NavLink to={'/'} >
