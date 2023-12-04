@@ -18,6 +18,7 @@ import UserPaginaError from "../Pages/PagesUsers/UserPageError"
 import UserVolumesFavoritos from "../Pages/PagesUsers/UserMinhaConta/UserVolumesFavoritos"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AdminLogin from "../Pages/PagesUsers/AdminLogin"
+import { UsuarioEstaLogadoProvider } from "../hooks/useUsuarioEstaLogado"
 
 const queryCliente = new QueryClient();
 
@@ -30,7 +31,11 @@ function AppRoutes() {
                 <main>
 
                     <Routes>
-                        <Route path="/" element={<UserPaginaPadrao />}>
+                        <Route path="/" element={
+                            <UsuarioEstaLogadoProvider>
+                                <UserPaginaPadrao />
+                            </UsuarioEstaLogadoProvider>
+                        }>
                             <Route index element={<UserInicio />} />
                             <Route path='anime' element={<UserEmConstrucao />} />
                             <Route path='manga' element={<UserEmConstrucao />} />
@@ -41,15 +46,16 @@ function AppRoutes() {
                                 <Route path='capitulos-favoritos' element={<UserEmConstrucao />} />
                                 <Route path='meus-dados' element={<UserEmConstrucao />} />
                             </Route>
-                            <Route path='cadastrar' element={<UserCadastrar />} />                       
+                            <Route path='cadastrar' element={<UserCadastrar />} />
                             <Route path="volumes/:volume" element={<UserVolumes />} />
                             <Route path="volumes/:volume/:capitulo" element={<UserCapitulo />} />
                             <Route path='*' element={<UserPaginaError children={'Essa página'} />} />
                         </Route>
 
+
                         <Route path="/admin" element={<Administracao />}>
                             <Route index element={<AreaAdmin />} />
-                            <Route path='capas' element={<AdmCapas />} />                  
+                            <Route path='capas' element={<AdmCapas />} />
                             <Route path='capas/:id' element={<FormularioCapas />} />
                             <Route path='capas/novo' element={<FormularioCapas />} />
                             <Route path='capitulos' element={<AdmCapitulos />} />

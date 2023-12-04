@@ -1,9 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import styles from './NavBar.module.scss'
 import styled from "styled-components"
-import { useState } from "react"
 import { Button } from "@mui/material"
 import SimpleMenu from "./SimpleMenu"
+import { useUsuarioEstaLogadoContextAPI } from "../../../hooks/useUsuarioEstaLogado"
 interface INavBar {
     logo: string
     icone1: React.ReactNode
@@ -18,16 +18,13 @@ interface INavBar {
 
 function UserNavBar({ logo, icone1, icone2, icone3, icone4, icone5, icone6, icone7 }: INavBar) {
 
-    const token = sessionStorage.getItem('token')
-    const [usuarioEstaLogado, setUsuarioEstaLogado] = useState<boolean>(token !== null)
+    const {usuarioEstaLogado, setUsuarioEstaLogado} = useUsuarioEstaLogadoContextAPI()
     const navigate = useNavigate()
 
     const efetuarLogout = () => {
         setUsuarioEstaLogado(false)
         sessionStorage.removeItem('token')
         navigate('/')
-        window.location.reload()
-
     }
 
     const NavLinkStyled = styled(NavLink)`

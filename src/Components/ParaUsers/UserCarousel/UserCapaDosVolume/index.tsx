@@ -3,6 +3,7 @@ import styles from './CapaVolume.module.scss'
 import { useState } from "react"
 import { Button } from "@mui/material"
 import { httpUsuarios } from "../../../../http"
+import { useUsuarioEstaLogadoContextAPI } from "../../../../hooks/useUsuarioEstaLogado"
 
 interface ICapaVolume {
     titulo: string
@@ -15,7 +16,7 @@ interface ICapaVolume {
 function CapaVolume({ titulo, descricao, url, volume }: ICapaVolume) {
 
     const token = sessionStorage.getItem('token')
-    const [usuarioEstaLogado] = useState<boolean>(token !== null)
+    const {usuarioEstaLogado, setUsuarioEstaLogado} = useUsuarioEstaLogadoContextAPI()
     const [favoritado, setFavoritado] = useState<boolean>(false);
 
     function aoClicarNoBotao() {

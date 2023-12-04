@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { IUsers } from "../../../interfaces/IUsers"
 import { useGetUsuarios } from "../../../hooks/useUsuarios"
 import styles from './UserFormLogin.module.scss'
+import { useUsuarioEstaLogadoContextAPI } from "../../../hooks/useUsuarioEstaLogado"
 
 
 function UserFormLogin() {
@@ -12,6 +13,7 @@ function UserFormLogin() {
     const [senha, setSenha] = useState('')
     const [usuarioEncontrado, setUsuarioEncontrado] = useState<IUsers | undefined>()
     const navigate = useNavigate()
+    const {usuarioEstaLogado, setUsuarioEstaLogado} = useUsuarioEstaLogadoContextAPI()
 
     const { data: usuarios } = useGetUsuarios()
 
@@ -33,6 +35,7 @@ function UserFormLogin() {
     useEffect(() => {
         if (usuarioEncontrado) {
             sessionStorage.setItem('token', usuarioEncontrado.id as string);
+            setUsuarioEstaLogado(true);
             navigate('/')
 
         } else {
