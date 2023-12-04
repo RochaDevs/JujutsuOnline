@@ -62,7 +62,7 @@ function UserNavBar({ logo, link1, link2, link3, link4, icone1 }: INavBar) {
                     {link3}
                     MANGÁ
                 </NavLinkStyled>
-                <NavLinkStyled to={'/admin'}> 
+                <NavLinkStyled to={'/loginAdmin'}> 
                     {link4}
                     ADM
                 </NavLinkStyled>
@@ -76,7 +76,7 @@ function UserNavBar({ logo, link1, link2, link3, link4, icone1 }: INavBar) {
                     linkMob2={<NavLinkStyled to={'/anime'} >{link2}</NavLinkStyled>}
                     linkMob3={<NavLinkStyled to={'/manga'} >{link3}</NavLinkStyled>}
                     linkMob4={<NavLinkStyled to={'/login'}>{icone1}</NavLinkStyled>}
-                    linkMob5={<NavLinkStyled to={'/admin'}>{link4}</NavLinkStyled>}
+                    linkMob5={<NavLinkStyled to={'/loginAdmin'}>{link4}</NavLinkStyled>}
                 />
             </div>
             <div>

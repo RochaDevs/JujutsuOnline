@@ -11,3 +11,7 @@ export const httpCapitulos = axios.create({
 export const httpUsuarios = axios.create({
     baseURL: 'https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/usuarios'
 })
+
+export const httpAdm = axios.create({
+    baseURL: 'https://65495bd0dd8ebcd4ab248482.mockapi.io/manga/administradores'
+})

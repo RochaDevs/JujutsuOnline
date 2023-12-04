@@ -17,6 +17,7 @@ import UserCapitulo from "../Pages/PagesUsers/UserCapitulo"
 import UserPaginaError from "../Pages/PagesUsers/UserPageError"
 import UserVolumesFavoritos from "../Pages/PagesUsers/UserMinhaConta/UserVolumesFavoritos"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AdminLogin from "../Pages/PagesUsers/AdminLogin"
 
 const queryCliente = new QueryClient();
 
@@ -34,6 +35,7 @@ function AppRoutes() {
                             <Route path='anime' element={<UserEmConstrucao />} />
                             <Route path='manga' element={<UserEmConstrucao />} />
                             <Route path='login' element={<UserLogin />} />
+                            <Route path='loginAdmin' element={<AdminLogin />} />
                             <Route path='minha-conta' element={<UserMinhaConta />}>
                                 <Route path='volumes-favoritos' element={<UserVolumesFavoritos />} />
                                 <Route path='capitulos-favoritos' element={<UserEmConstrucao />} />
