@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from "react-router-dom"
 import { useGetCapitulos, usePostCapitulo, usePutCapitulo } from "../../../../hooks/useCapitulos"
 import ICapitulos from "../../../../interfaces/ICapitulos"
+import styles from './FormularioCapitulos.module.scss'
 
 function FormularioCapitulos() {
 
@@ -56,7 +57,7 @@ function FormularioCapitulos() {
 
     return (
 
-        <section>
+        <section className={styles.sectionStyled}>
 
             <Paper sx={{ p: 6 }}>
 

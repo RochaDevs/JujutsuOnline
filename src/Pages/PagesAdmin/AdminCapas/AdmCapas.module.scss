@@ -12,6 +12,10 @@
         justify-content: center;
     }
 
+    .adminPostMobile {
+        display: none;
+    }
+
     .containerStyled {
         background-color: #F0F0F0;
         margin-right: 2rem;
@@ -24,6 +28,27 @@
             justify-content: end;
             gap: 2rem;
             padding: 1rem 1rem; 
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    /* Estilos para telas menores (até 500px de largura) */
+
+    .sectionAllStyled {
+        flex-direction: column;
+
+        .asideStyled {
+            display: none;
+        }
+
+        .adminPostMobile {
+            padding: 1rem;
+        }
+
+        .containerStyled {
+            margin-right: 0;
+            padding-right: 2.25rem;
         }
     }
 }

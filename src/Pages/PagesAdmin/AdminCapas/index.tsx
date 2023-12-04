@@ -18,7 +18,7 @@ function AdmCapas() {
             return capas; // retorna o array ordenado
         }
     }
-    
+
     console.log(ordemCapas())
 
     const { mutate } = useDeleteCapa();
@@ -38,6 +38,13 @@ function AdmCapas() {
                     buttonChildren={'Nova Capa'}
                 />
             </aside>
+
+            <div className={styles.adminPostMobile}>
+                <AdminPOST
+                tipographyChildren={'Olá, eu sou Gege Akutami! O criador de Jujutsu Kaisen. Se você deseja adicionar um dos meus mais recentes volumes, basta clicar no botão abaixo!'}
+                    buttonChildren={'Nova Capa'}
+                />
+            </div>
 
             <div className={styles.containerStyled}>
 

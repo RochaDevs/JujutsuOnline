@@ -7,8 +7,8 @@ interface ISimpleMenuProps {
   linkMob1: React.ReactNode;
   linkMob2: React.ReactNode;
   linkMob3: React.ReactNode;
-  linkMob4: React.ReactNode;
-  linkMob5: React.ReactNode;
+  linkMob4?: React.ReactNode;
+  linkMob5?: React.ReactNode;
 }
 
 export default function SimpleMenu({ linkMob1, linkMob2, linkMob3, linkMob4, linkMob5 }: ISimpleMenuProps) {
@@ -26,7 +26,7 @@ export default function SimpleMenu({ linkMob1, linkMob2, linkMob3, linkMob4, lin
   return (
     <div className={styles.menu}>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        <GiHamburgerMenu size={25} />
+        <GiHamburgerMenu color='#FFF' size={25} />
       </Button>
       <Menu
         id="simple-menu"

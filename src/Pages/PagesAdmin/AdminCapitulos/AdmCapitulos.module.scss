@@ -12,19 +12,30 @@
         justify-content: center;
     }
 
+    .adminPostMobile {
+        display: none;
+    }
+
     .containerStyled {
         background-color: #F0F0F0;
         padding: 2rem 1rem;
         overflow-y: scroll;
         width: 100%;
+    }
+}
 
-        // .mainStyled {
-        //     display: flex;
-        //     text-align: center;
-        //     flex-direction: column-reverse;
-        //     justify-content: center;
-        //     gap: 2rem;
-        //     padding: 1rem 1rem; 
-        // }
+@media (max-width: 600px) {
+    /* Estilos para telas menores (até 500px de largura) */
+
+    .sectionStyled {
+        flex-direction: column;
+
+        .asideStyled {
+            display: none;
+        }
+
+        .adminPostMobile {
+            padding: 1rem;
+        }
     }
 }
