@@ -1,7 +1,7 @@
 
 import { Button, Paper, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import styles from './AdminFormLogin.module.scss'
 import { IAdm } from "../../../interfaces/IAdm"
 import { useGetAdm } from "../../../hooks/useAdm"
@@ -128,16 +128,6 @@ export default function AdminFormLogin() {
                     required
                 />
                 <div className={styles.divStyled}>
-                    <NavLink to={'/cadastrar'}>
-                        <Button sx={{
-                            '@media (max-width: 600px)': {
-                                width: '100%',
-                                padding: '0rem 3rem'
-                            }
-                        }} color="error" variant="outlined">
-                            Cadastrar
-                        </Button>
-                    </NavLink>
                     <Button sx={{
                         '@media (max-width: 600px)': {
                             width: '100%',

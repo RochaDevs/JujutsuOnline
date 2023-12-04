@@ -9,9 +9,11 @@ interface ISimpleMenuProps {
   linkMob3: React.ReactNode;
   linkMob4?: React.ReactNode;
   linkMob5?: React.ReactNode;
+  linkMob6?: React.ReactNode;
+  linkMob7?: React.ReactNode;
 }
 
-export default function SimpleMenu({ linkMob1, linkMob2, linkMob3, linkMob4, linkMob5 }: ISimpleMenuProps) {
+export default function SimpleMenu({ linkMob1, linkMob2, linkMob3, linkMob4, linkMob5, linkMob6, linkMob7 }: ISimpleMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -39,11 +41,13 @@ export default function SimpleMenu({ linkMob1, linkMob2, linkMob3, linkMob4, lin
         }}
       >
         <div className={styles.divMenu}>
-          <MenuItem onClick={handleClose}>{linkMob1}</MenuItem>
-          <MenuItem onClick={handleClose}>{linkMob2}</MenuItem>
-          <MenuItem onClick={handleClose}>{linkMob3}</MenuItem>
-          <MenuItem onClick={handleClose}>{linkMob4}</MenuItem>
-          <MenuItem onClick={handleClose}>{linkMob5}</MenuItem>
+          {linkMob1 && <MenuItem onClick={handleClose}>{linkMob1}</MenuItem>}
+          {linkMob2 && <MenuItem onClick={handleClose}>{linkMob2}</MenuItem>}
+          {linkMob3 && <MenuItem onClick={handleClose}>{linkMob3}</MenuItem>}
+          {linkMob4 && <MenuItem onClick={handleClose}>{linkMob4}</MenuItem>}
+          {linkMob5 && <MenuItem onClick={handleClose}>{linkMob5}</MenuItem>}
+          {linkMob6 && <MenuItem onClick={handleClose}>{linkMob6}</MenuItem>}
+          {linkMob7 && <MenuItem onClick={handleClose}>{linkMob7}</MenuItem>}
         </div>
       </Menu>
     </div>

@@ -27,11 +27,11 @@ function NavBarAdm({ titulo1, titulo2, titulo3 }: INavBarAdm) {
         const hora = new Date().getHours()
 
         if (hora < 12) {
-            return 'bom dia,';
+            return ' bom dia,';
         } else if (hora < 18) {
-            return 'boa tarde,';
+            return ' boa tarde,';
         } else {
-            return 'boa noite,';
+            return ' boa noite,';
         }
     }
 

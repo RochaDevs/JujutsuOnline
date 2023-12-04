@@ -35,7 +35,17 @@ export default function UserMinhaConta() {
                     color: '#FFF',
                     alignItems: 'center',
                     justifyContent: 'space-evenly',
-                    fontSize: '1.25rem'
+                    fontSize: '1.25rem',
+                    '@media (max-width: 600px)': {
+                        // Estilos para telas menores (tablets)
+                        flexDirection: 'row',
+                        width: '100%',
+                        height: 'auto',
+                        margin: '1rem',
+                        fontSize: '1.25rem',
+                        gap: '1rem',
+                        borderRadius: '1rem'
+                    },
                 }}>
                     <NavLinkStyled to={'volumes-favoritos'}>Volumes favoritos</NavLinkStyled>
                     <NavLinkStyled to={'capitulos-favoritos'}>Capítulos favoritos</NavLinkStyled>

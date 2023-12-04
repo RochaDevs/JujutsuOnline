@@ -6,15 +6,17 @@ import { Button } from "@mui/material"
 import SimpleMenu from "./SimpleMenu"
 interface INavBar {
     logo: string
-    link1: React.ReactNode
-    link2: React.ReactNode
-    link3: React.ReactNode
-    link4: React.ReactNode
     icone1: React.ReactNode
+    icone2: React.ReactNode
+    icone3: React.ReactNode
+    icone4: React.ReactNode
+    icone5: React.ReactNode
+    icone6: React.ReactNode
+    icone7: React.ReactNode
 
 }
 
-function UserNavBar({ logo, link1, link2, link3, link4, icone1 }: INavBar) {
+function UserNavBar({ logo, icone1, icone2, icone3, icone4, icone5, icone6, icone7 }: INavBar) {
 
     const token = sessionStorage.getItem('token')
     const [usuarioEstaLogado, setUsuarioEstaLogado] = useState<boolean>(token !== null)
@@ -24,6 +26,7 @@ function UserNavBar({ logo, link1, link2, link3, link4, icone1 }: INavBar) {
         setUsuarioEstaLogado(false)
         sessionStorage.removeItem('token')
         navigate('/')
+        window.location.reload()
 
     }
 
@@ -51,19 +54,19 @@ function UserNavBar({ logo, link1, link2, link3, link4, icone1 }: INavBar) {
                     <img className={styles.imgStyled} src={logo} alt="Titulo JJK" />
                 </NavLink>
                 <NavLinkStyled to={'/'}>
-                    {link1}
+                    {icone1}
                     INÍCIO
                 </NavLinkStyled>
                 <NavLinkStyled to={'/anime'}>
-                    {link2}
+                    {icone2}
                     ANIME
                 </NavLinkStyled>
                 <NavLinkStyled to={'/manga'}>
-                    {link3}
+                    {icone3}
                     MANGÁ
                 </NavLinkStyled>
-                <NavLinkStyled to={'/loginAdmin'}> 
-                    {link4}
+                <NavLinkStyled to={'/loginAdmin'}>
+                    {icone4}
                     ADM
                 </NavLinkStyled>
             </div>
@@ -71,30 +74,45 @@ function UserNavBar({ logo, link1, link2, link3, link4, icone1 }: INavBar) {
                 <NavLink to={'/'} >
                     <img className={styles.imgStyled} src={logo} alt="Titulo JJK" />
                 </NavLink>
-                <SimpleMenu
-                    linkMob1={<NavLinkStyled to={'/'} >{link1}</NavLinkStyled>}
-                    linkMob2={<NavLinkStyled to={'/anime'} >{link2}</NavLinkStyled>}
-                    linkMob3={<NavLinkStyled to={'/manga'} >{link3}</NavLinkStyled>}
-                    linkMob4={<NavLinkStyled to={'/login'}>{icone1}</NavLinkStyled>}
-                    linkMob5={<NavLinkStyled to={'/loginAdmin'}>{link4}</NavLinkStyled>}
-                />
+                {!usuarioEstaLogado && (
+                    <SimpleMenu
+                        linkMob1={<NavLinkStyled to={'/'} >{icone1}</NavLinkStyled>}
+                        linkMob2={<NavLinkStyled to={'/anime'} >{icone2}</NavLinkStyled>}
+                        linkMob3={<NavLinkStyled to={'/manga'} >{icone3}</NavLinkStyled>}
+                        linkMob4={<NavLinkStyled to={'/login'}>{icone5}</NavLinkStyled>}
+                        linkMob5={<NavLinkStyled to={'/loginAdmin'}>{icone4}</NavLinkStyled>}
+                    />
+                )}
+                {usuarioEstaLogado && (
+                    <SimpleMenu
+                        linkMob1={<NavLinkStyled to={'/'} >{icone1}</NavLinkStyled>}
+                        linkMob2={<NavLinkStyled to={'/anime'} >{icone2}</NavLinkStyled>}
+                        linkMob3={<NavLinkStyled to={'/manga'} >{icone3}</NavLinkStyled>}
+                        linkMob6={<NavLinkStyled to={'/minha-conta'}>{icone6}</NavLinkStyled>}
+                        linkMob7={<NavLinkStyled to={'/minha-conta'}>{
+                            <Button sx={{ padding: '0rem 1rem', margin: '0rem 1rem' }} color='error' onClick={efetuarLogout}>
+                                {icone7}
+                            </Button>
+                        }</NavLinkStyled>}
+                    />
+                )}
             </div>
             <div>
                 {!usuarioEstaLogado && (
                     <div className={styles.divTwoStyled}>
                         <NavLinkStyled to={'/login'}>
-                            {icone1}
+                            {icone5}
                             LOGIN
                         </NavLinkStyled>
                     </div>
                 )}
                 {usuarioEstaLogado && (
-                    <>
-                        <NavLinkStyled to={'/minha-conta'} >Minha Conta</NavLinkStyled>
+                    <div className={styles.divTwoStyled}>
+                        <NavLinkStyled to={'/minha-conta'}>MINHA CONTA</NavLinkStyled>
                         <Button sx={{ padding: '0rem 1rem', margin: '0rem 1rem' }} color='error' onClick={efetuarLogout}>
-                            Sair
+                            {icone7}
                         </Button>
-                    </>
+                    </div>
                 )}
 
             </div>

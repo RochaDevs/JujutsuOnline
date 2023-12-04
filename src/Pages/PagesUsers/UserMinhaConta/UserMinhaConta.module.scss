@@ -21,3 +21,24 @@
         overflow-y: auto; /* Barra de rolagem para conteúdo que excede a altura */
     }
 }
+
+@media (max-width: 600px) {
+    /* Estilos para telas menores (até 500px de largura) */
+    .sectionStyled {
+        flex-direction: column;
+        overflow: visible;
+        width: 100%;
+
+        .asideStyled {
+            width: 100%;
+            height: auto;
+        }
+
+        .outletStyled {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}

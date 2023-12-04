@@ -34,7 +34,7 @@ function UserFormLogin() {
         if (usuarioEncontrado) {
             sessionStorage.setItem('token', usuarioEncontrado.id as string);
             navigate('/')
-            window.location.reload();
+
         } else {
             console.log('Usuário não encontrado');
         }
