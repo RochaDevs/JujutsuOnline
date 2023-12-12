@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import styles from './CapaVolume.module.scss'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@mui/material"
 import { httpUsuarios } from "../../../../http"
 import { useUsuarioEstaLogadoContextAPI } from "../../../../hooks/useUsuarioEstaLogado"
@@ -16,12 +16,13 @@ interface ICapaVolume {
 function CapaVolume({ titulo, descricao, url, volume }: ICapaVolume) {
 
     const token = sessionStorage.getItem('token')
-    const {usuarioEstaLogado, setUsuarioEstaLogado} = useUsuarioEstaLogadoContextAPI()
+    const {usuarioEstaLogado} = useUsuarioEstaLogadoContextAPI()
     const [favoritado, setFavoritado] = useState<boolean>(false);
 
     function aoClicarNoBotao() {
         const novoEstadoFavoritado = !favoritado;
         setFavoritado(novoEstadoFavoritado);
+        localStorage.setItem(`${titulo}-favoritado`, novoEstadoFavoritado.toString())
 
         const dadosUsuario = novoEstadoFavoritado ? { titulo, descricao, url, volume } : { titulo: null, descricao: null, url: null, volume: null };
 
@@ -33,6 +34,13 @@ function CapaVolume({ titulo, descricao, url, volume }: ICapaVolume) {
             console.log(error)
         });
     }
+
+    useEffect(() => {
+        const estadoFavoritadoSalvo = localStorage.getItem(`${titulo}-favoritado`)
+        if (estadoFavoritadoSalvo !== null) {
+            setFavoritado(estadoFavoritadoSalvo === 'true')
+        }
+    },[titulo])
 
     return (
         <div className={styles.divStyled}>

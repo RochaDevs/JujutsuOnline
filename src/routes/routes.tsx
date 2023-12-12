@@ -19,6 +19,7 @@ import UserVolumesFavoritos from "../Pages/PagesUsers/UserMinhaConta/UserVolumes
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AdminLogin from "../Pages/PagesUsers/AdminLogin"
 import { UsuarioEstaLogadoProvider } from "../hooks/useUsuarioEstaLogado"
+import { UserMeusDados } from "../Pages/PagesUsers/UserMinhaConta/UserMeusDados"
 
 const queryCliente = new QueryClient();
 
@@ -44,7 +45,7 @@ function AppRoutes() {
                             <Route path='minha-conta' element={<UserMinhaConta />}>
                                 <Route path='volumes-favoritos' element={<UserVolumesFavoritos />} />
                                 <Route path='capitulos-favoritos' element={<UserEmConstrucao />} />
-                                <Route path='meus-dados' element={<UserEmConstrucao />} />
+                                <Route path='meus-dados' element={<UserMeusDados />} />
                             </Route>
                             <Route path='cadastrar' element={<UserCadastrar />} />
                             <Route path="volumes/:volume" element={<UserVolumes />} />
