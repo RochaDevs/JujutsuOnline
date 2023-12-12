@@ -13,7 +13,7 @@ function UserFormLogin() {
     const [senha, setSenha] = useState('')
     const [usuarioEncontrado, setUsuarioEncontrado] = useState<IUsers | undefined>()
     const navigate = useNavigate()
-    const {usuarioEstaLogado, setUsuarioEstaLogado} = useUsuarioEstaLogadoContextAPI()
+    const {setUsuarioEstaLogado} = useUsuarioEstaLogadoContextAPI()
 
     const { data: usuarios } = useGetUsuarios()
 
