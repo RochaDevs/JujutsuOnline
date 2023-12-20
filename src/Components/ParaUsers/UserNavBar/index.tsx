@@ -46,6 +46,7 @@ function UserNavBar({ logo, icone1, icone2, icone3, icone4, icone5, icone6, icon
     return (
 
         <nav className={styles.navStyled}>
+
             <div className={styles.divOneStyled}>
                 <NavLink to={'/'} >
                     <img className={styles.imgStyled} src={logo} alt="Titulo JJK" />
@@ -67,6 +68,7 @@ function UserNavBar({ logo, icone1, icone2, icone3, icone4, icone5, icone6, icon
                     ADM
                 </NavLinkStyled>
             </div>
+
             <div className={styles.MenuMobile}>
                 <NavLink to={'/'} >
                     <img className={styles.imgStyled} src={logo} alt="Titulo JJK" />
@@ -94,6 +96,7 @@ function UserNavBar({ logo, icone1, icone2, icone3, icone4, icone5, icone6, icon
                     />
                 )}
             </div>
+            
             <div>
                 {!usuarioEstaLogado && (
                     <div className={styles.divTwoStyled}>
