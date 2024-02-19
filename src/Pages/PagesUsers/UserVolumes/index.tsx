@@ -10,6 +10,8 @@ export default function UserVolumes() {
 
     const parametros = useParams<{ volume: string }>();
 
+    console.log(parametros)
+
     const volumeEncontrado = Array.isArray(capas) ? capas.find((capa: ICapas) => {
         return parametros.volume === capa.volume 
     }) : null

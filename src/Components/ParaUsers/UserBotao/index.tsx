@@ -2,7 +2,7 @@ import styles from './Botao.module.scss'
 
 interface IBotao {
     titulo: string
-    action: () => void
+    action?: () => void
 }
 
 function Botao({titulo, action} :IBotao) {
